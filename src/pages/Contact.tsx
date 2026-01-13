@@ -15,6 +15,7 @@ import {
   MessageSquare
 } from "lucide-react";
 import { z } from "zod";
+import heroImage from "@/assets/hero-contact.jpg";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Le nom doit contenir au moins 2 caractères").max(100),
@@ -90,18 +91,29 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="section-padding bg-secondary">
-        <div className="container-yl">
+      <section className="relative min-h-[40vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImage}
+            alt="Contact YL Solutions"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/60" />
+        </div>
+
+        {/* Content */}
+        <div className="container-yl relative z-10 py-16 md:py-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="text-center max-w-2xl mx-auto"
           >
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
               Contactez-nous
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-primary-foreground/80">
               Une question, un projet ? N'hésitez pas à nous contacter. 
               Nous vous répondrons dans les plus brefs délais.
             </p>

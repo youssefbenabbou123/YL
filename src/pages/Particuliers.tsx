@@ -14,6 +14,7 @@ import {
   Shield,
   Euro
 } from "lucide-react";
+import heroImage from "@/assets/hero-particuliers.jpg";
 
 const benefits = [
   {
@@ -49,27 +50,38 @@ const Particuliers = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="section-padding bg-secondary">
-        <div className="container-yl">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImage}
+            alt="Rénovation intérieure"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
+        </div>
+
+        {/* Content */}
+        <div className="container-yl relative z-10 py-16 md:py-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="max-w-3xl"
           >
-            <span className="text-primary font-medium text-sm uppercase tracking-wider">
+            <span className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full text-primary-foreground text-sm font-medium mb-6">
               Pour les particuliers
             </span>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mt-3 mb-6">
               Trouvez le bon professionnel pour vos travaux
             </h1>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-lg text-primary-foreground/80 mb-8 leading-relaxed">
               Vous avez un projet de rénovation, d'aménagement ou de dépannage ? 
               YL Solutions vous met en relation avec des professionnels qualifiés, 
               adaptés à vos besoins et à votre budget.
             </p>
             <Link to="/contact">
-              <Button variant="cta" size="xl" className="group">
+              <Button variant="ctaOutline" size="xl" className="group">
                 Décrire mon projet
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
