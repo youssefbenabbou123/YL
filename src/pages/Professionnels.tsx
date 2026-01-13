@@ -11,6 +11,7 @@ import {
   Handshake,
   BadgeCheck
 } from "lucide-react";
+import heroImage from "@/assets/hero-professionnels.jpg";
 
 const benefits = [
   {
@@ -62,15 +63,26 @@ const Professionnels = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="section-padding bg-primary">
-        <div className="container-yl">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImage}
+            alt="Partenariat professionnel"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
+        </div>
+
+        {/* Content */}
+        <div className="container-yl relative z-10 py-16 md:py-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="max-w-3xl"
           >
-            <span className="text-primary-foreground/70 font-medium text-sm uppercase tracking-wider">
+            <span className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full text-primary-foreground text-sm font-medium mb-6">
               Pour les professionnels
             </span>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mt-3 mb-6">
