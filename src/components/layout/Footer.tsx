@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Star } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -63,15 +63,6 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a 
-                  href="mailto:youcef.lebkiri.pro@gmail.com" 
-                  className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm"
-                >
-                  <Mail className="w-4 h-4 flex-shrink-0" />
-                  <span>youcef.lebkiri.pro@gmail.com</span>
-                </a>
-              </li>
-              <li>
-                <a 
                   href="tel:+33627104458" 
                   className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm"
                 >
@@ -80,10 +71,34 @@ const Footer = () => {
                 </a>
               </li>
               <li>
+                <a 
+                  href="mailto:youcef.lebkiri.pro@gmail.com" 
+                  className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm"
+                >
+                  <Mail className="w-4 h-4 flex-shrink-0" />
+                  <span>youcef.lebkiri.pro@gmail.com</span>
+                </a>
+              </li>
+              <li>
                 <div className="flex items-start gap-3 text-primary-foreground/80 text-sm">
                   <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
                   <span>France</span>
                 </div>
+              </li>
+              <li>
+                <div className="flex items-center gap-3 text-primary-foreground/80 text-sm">
+                  <Clock className="w-4 h-4 flex-shrink-0" />
+                  <span>Lundi - Vendredi : 9h – 18h</span>
+                </div>
+              </li>
+              <li>
+                <a 
+                  href="/contact" 
+                  className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm"
+                >
+                  <Star className="w-4 h-4 flex-shrink-0" />
+                  <span>Laissez-nous un avis</span>
+                </a>
               </li>
             </ul>
           </div>

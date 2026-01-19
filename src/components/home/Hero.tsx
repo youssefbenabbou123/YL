@@ -107,19 +107,6 @@ const Hero = () => {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
                             </div>
-
-                            {/* Floating Card Over Image */}
-                            <div className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/20">
-                                <div className="flex items-start gap-4">
-                                    <div className="p-3 bg-primary/10 rounded-full">
-                                        <Building2 className="w-6 h-6 text-primary" />
-                                    </div>
-                                    <div>
-                                        <p className="text-sm text-muted-foreground mb-1">Partenaires de confiance</p>
-                                        <p className="text-lg font-bold text-primary">Plus de 500 experts</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                         {/* Decorative BG shapes behind image */}

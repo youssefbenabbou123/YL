@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const CTA = () => {
@@ -13,37 +13,6 @@ const CTA = () => {
           backgroundSize: '40px 40px'
         }}></div>
       </div>
-
-      {/* Animated Sparkles */}
-      <motion.div
-        className="absolute top-10 left-10 text-primary/10"
-        animate={{ 
-          y: [0, -10, 0],
-          rotate: [0, 5, 0]
-        }}
-        transition={{ 
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      >
-        <Sparkles className="w-12 h-12" />
-      </motion.div>
-      <motion.div
-        className="absolute bottom-20 right-20 text-primary/10"
-        animate={{ 
-          y: [0, 10, 0],
-          rotate: [0, -5, 0]
-        }}
-        transition={{ 
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1
-        }}
-      >
-        <Sparkles className="w-16 h-16" />
-      </motion.div>
 
       <div className="container-yl relative z-10">
         <motion.div
