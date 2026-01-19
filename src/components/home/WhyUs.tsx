@@ -35,10 +35,7 @@ const WhyUs = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12 md:mb-16"
         >
-          <span className="text-primary-foreground/70 font-medium text-sm uppercase tracking-wider">
-            Nos engagements
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mt-3 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
             Pourquoi choisir YL Solutions ?
           </h2>
           <p className="text-primary-foreground/80 max-w-2xl mx-auto">
@@ -46,7 +43,7 @@ const WhyUs = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {benefits.map((benefit, index) => (
             <motion.div
               key={benefit.title}
@@ -54,17 +51,17 @@ const WhyUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-primary-foreground/5 backdrop-blur-sm rounded-xl p-6 md:p-8 border border-primary-foreground/10"
+              className="bg-background rounded-xl p-8 border border-border/50 shadow-sm hover:shadow-md transition-shadow duration-300"
             >
               <div className="flex gap-5">
-                <div className="w-12 h-12 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0">
-                  <benefit.icon className="w-6 h-6 text-primary-foreground" />
+                <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <benefit.icon className="w-7 h-7 text-primary" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-primary-foreground mb-2">
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-foreground mb-3">
                     {benefit.title}
                   </h3>
-                  <p className="text-primary-foreground/70 text-sm leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>

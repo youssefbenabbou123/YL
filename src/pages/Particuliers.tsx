@@ -69,10 +69,10 @@ const Particuliers = () => {
             transition={{ duration: 0.5 }}
             className="max-w-3xl"
           >
-            <span className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full text-primary-foreground text-sm font-medium mb-6">
+            <span className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full text-primary-foreground text-sm font-medium mt-8 md:mt-12 mb-3">
               Pour les particuliers
             </span>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mt-3 mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
               Trouvez le bon professionnel pour vos travaux
             </h1>
             <p className="text-lg text-primary-foreground/80 mb-8 leading-relaxed">
@@ -100,7 +100,7 @@ const Particuliers = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 mt-8 md:mt-12">
               Ce que nous faisons pour vous
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -143,7 +143,7 @@ const Particuliers = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4 mt-8 md:mt-12">
               Quels types de travaux ?
             </h2>
             <p className="text-primary-foreground/80 max-w-2xl mx-auto">
@@ -186,7 +186,7 @@ const Particuliers = () => {
                 <CheckCircle className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
+                <h3 className="text-xl font-semibold text-foreground mb-3 mt-8 md:mt-12">
                   Important à savoir
                 </h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
@@ -207,23 +207,28 @@ const Particuliers = () => {
 
       {/* CTA */}
       <section className="section-padding bg-secondary">
-        <div className="container-yl text-center">
+        <div className="container-yl">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Prêt à lancer votre projet ?
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto mb-8">
+            <p className="text-base text-muted-foreground mb-6 max-w-2xl mx-auto">
               Décrivez-nous votre projet et recevez une mise en relation avec des professionnels adaptés.
             </p>
             <Link to="/contact">
-              <Button variant="cta" size="xl" className="group">
-                Contacter YL Solutions
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <Button 
+                variant="cta"
+                size="xl" 
+                className="group"
+              >
+                Nous contacter
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
           </motion.div>

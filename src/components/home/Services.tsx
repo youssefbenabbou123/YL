@@ -11,60 +11,62 @@ import {
 const services = [
   {
     icon: Home,
-    title: "Rénovation intérieure",
-    description: "Cuisine, salle de bain, peinture, sol, électricité, plomberie...",
+    title: "Rénovation de prestige",
+    description: "Transformation intégrale de vos espaces de vie. Du sol au plafond, nous sublimons votre intérieur avec des finitions d'exception.",
   },
   {
     icon: Building,
-    title: "Rénovation extérieure",
-    description: "Façade, toiture, terrasse, jardin, clôture, portail...",
+    title: "Architecture extérieure",
+    description: "Valorisez votre patrimoine. Façades, toitures et aménagements paysagers pour une esthétique durable et soignée.",
   },
   {
     icon: Hammer,
-    title: "Construction",
-    description: "Extension, surélévation, maison individuelle, bâtiment...",
+    title: "Gros œuvre & maçonnerie",
+    description: "L'art de bâtir. Extensions, surélévations et constructions neuves réalisées dans les règles de l'art.",
   },
   {
     icon: Wrench,
-    title: "Dépannage",
-    description: "Plomberie, électricité, serrurerie, chauffage, urgences...",
+    title: "Interventions techniques",
+    description: "Expertise et réactivité. Plomberie, électricité et chauffage : des solutions fiables pour votre sérénité.",
   },
   {
     icon: PaintBucket,
-    title: "Aménagement",
-    description: "Décoration, agencement, mobilier sur mesure, rangements...",
+    title: "Agencement sur mesure",
+    description: "Optimisation de l'espace. Mobilier unique et décoration personnalisée pour un intérieur qui vous ressemble.",
   },
   {
     icon: HardHat,
-    title: "Tous corps d'état",
-    description: "Coordination et gestion de projets complets de A à Z.",
+    title: "Pilotage de projet TCE",
+    description: "Gestion clé en main. Une coordination rigoureuse de tous les corps de métier pour un chantier maîtrisé de A à Z.",
   },
 ];
 
 const Services = () => {
   return (
-    <section className="section-padding bg-secondary">
-      <div className="container-yl">
+    <section className="section-padding bg-secondary/30 relative overflow-hidden">
+      {/* Decorative background blobs */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none" />
+
+      <div className="container-yl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-16"
         >
-          <span className="text-primary font-medium text-sm uppercase tracking-wider">
-            Nos domaines d'intervention
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
-            Types de travaux concernés
+
+
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 tracking-tight">
+            L'excellence à tous les niveaux
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Quel que soit votre projet, nous vous mettons en relation avec les professionnels
-            les plus adaptés à vos besoins.
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+            Une expertise globale pour répondre aux exigences les plus élevées de vos projets de construction et rénovation.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -72,17 +74,21 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="card-elevated card-hover p-6 md:p-8"
+              className="group relative bg-background rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-border hover:border-primary/20 overflow-hidden"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <service.icon className="w-6 h-6 text-primary" />
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                  <service.icon className="w-8 h-8 text-primary" />
+                </div>
+
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  {service.title}
+                </h3>
+
+                <p className="text-muted-foreground leading-relaxed">
+                  {service.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {service.description}
-              </p>
             </motion.div>
           ))}
         </div>

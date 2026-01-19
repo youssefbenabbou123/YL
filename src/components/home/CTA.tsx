@@ -1,39 +1,132 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const CTA = () => {
   return (
-    <section className="section-padding bg-secondary">
-      <div className="container-yl">
+    <section className="relative section-padding overflow-hidden bg-secondary">
+      {/* Decorative Pattern Overlay */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(14,37,68,0.2) 1px, transparent 0)`,
+          backgroundSize: '40px 40px'
+        }}></div>
+      </div>
+
+      {/* Animated Sparkles */}
+      <motion.div
+        className="absolute top-10 left-10 text-primary/10"
+        animate={{ 
+          y: [0, -10, 0],
+          rotate: [0, 5, 0]
+        }}
+        transition={{ 
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        <Sparkles className="w-12 h-12" />
+      </motion.div>
+      <motion.div
+        className="absolute bottom-20 right-20 text-primary/10"
+        animate={{ 
+          y: [0, 10, 0],
+          rotate: [0, -5, 0]
+        }}
+        transition={{ 
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1
+        }}
+      >
+        <Sparkles className="w-16 h-16" />
+      </motion.div>
+
+      <div className="container-yl relative z-10">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="card-elevated p-8 md:p-12 lg:p-16 text-center"
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+          {/* Main Heading */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6 leading-tight"
+          >
             Prêt à démarrer votre projet ?
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto mb-8">
+          </motion.h2>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
+          >
             Contactez-nous dès maintenant pour discuter de vos besoins.
+            <br className="hidden md:block" />
             Nous vous trouverons les professionnels adaptés à votre projet.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col sm:flex-row justify-center items-center gap-4"
+          >
             <Link to="/contact">
-              <Button variant="cta" size="xl" className="w-full sm:w-auto group">
+              <Button 
+                variant="cta"
+                size="xl" 
+                className="w-full sm:w-auto h-14 px-8 text-base font-semibold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 rounded-full group"
+              >
                 Demander un devis gratuit
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
             <Link to="/particuliers">
-              <Button variant="outline" size="xl" className="w-full sm:w-auto">
+              <Button 
+                variant="outline" 
+                size="xl" 
+                className="w-full sm:w-auto h-14 px-8 text-base font-semibold transition-all duration-300 rounded-full"
+              >
                 En savoir plus
               </Button>
             </Link>
-          </div>
+          </motion.div>
+
+          {/* Trust Indicators */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-12 pt-8 border-t border-border flex flex-wrap justify-center items-center gap-6 text-sm text-muted-foreground"
+          >
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-primary" />
+              <span>Réponse sous 24h</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-primary" />
+              <span>Devis gratuit</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-primary" />
+              <span>Sans engagement</span>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

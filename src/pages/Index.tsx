@@ -5,7 +5,8 @@ import HowItWorks from "@/components/home/HowItWorks";
 import WhyUs from "@/components/home/WhyUs";
 import CTA from "@/components/home/CTA";
 import Manifesto from "@/components/home/Manifesto";
-import Gallery from "@/components/home/Gallery";
+
+
 
 const Index = () => {
   return (
@@ -15,7 +16,8 @@ const Index = () => {
       <Services />
       <HowItWorks />
       <WhyUs />
-      <Gallery />
+
+
       <CTA />
     </Layout>
   );

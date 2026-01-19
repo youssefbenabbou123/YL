@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container-yl section-padding">
+      <div className="container-yl section-padding pb-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
@@ -72,11 +72,11 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="tel:+33600000000" 
+                  href="tel:+33627104458" 
                   className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm"
                 >
                   <Phone className="w-4 h-4 flex-shrink-0" />
-                  <span>06 00 00 00 00</span>
+                  <span>06 27 10 44 58</span>
                 </a>
               </li>
               <li>

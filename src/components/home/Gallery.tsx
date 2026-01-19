@@ -14,7 +14,7 @@ const Gallery = () => {
         <section className="section-padding bg-background">
             <div className="container-yl">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Nos Réalisations</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Nos réalisations</h2>
                     <p className="text-muted-foreground">Une sélection de projets menés à bien par nos partenaires.</p>
                 </div>
 
