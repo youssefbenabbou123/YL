@@ -18,7 +18,7 @@ const CTA = () => {
             Prêt à démarrer votre projet ?
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-            Contactez-nous dès maintenant pour discuter de vos besoins. 
+            Contactez-nous dès maintenant pour discuter de vos besoins.
             Nous vous trouverons les professionnels adaptés à votre projet.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">

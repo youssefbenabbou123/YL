@@ -64,7 +64,7 @@ const HowItWorks = () => {
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-border" />
               )}
-              
+
               <div className="text-center">
                 <div className="relative inline-flex">
                   <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mb-4">

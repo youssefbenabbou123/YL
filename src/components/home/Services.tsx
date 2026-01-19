@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { 
-  Home, 
-  Building, 
-  Wrench, 
-  Hammer, 
+import {
+  Home,
+  Building,
+  Wrench,
+  Hammer,
   PaintBucket,
   HardHat
 } from "lucide-react";
@@ -59,7 +59,7 @@ const Services = () => {
             Types de travaux concernés
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Quel que soit votre projet, nous vous mettons en relation avec les professionnels 
+            Quel que soit votre projet, nous vous mettons en relation avec les professionnels
             les plus adaptés à vos besoins.
           </p>
         </motion.div>
