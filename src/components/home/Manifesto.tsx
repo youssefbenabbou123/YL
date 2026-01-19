@@ -1,22 +1,21 @@
 import TextAnimation from "@/components/ui/scroll-text";
-import Squares from "@/components/Squares";
+import Threads from "@/components/Threads";
 
 const Manifesto = () => {
     return (
         <section className="py-24 md:py-32 bg-background overflow-hidden relative">
             <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-                <Squares
-                    speed={0.5}
-                    squareSize={40}
-                    direction="diagonal"
-                    borderColor="#707aff"
-                    hoverFillColor="#ffffff"
+                <Threads
+                    color={[0.32, 0.15, 1]}
+                    amplitude={2.1}
+                    distance={0}
+                    enableMouseInteraction={false}
                 />
             </div>
             <div className="container-yl relative z-10">
 
                 {/* Section 1: Introduction */}
-                <div className="min-h-[40vh] flex flex-col justify-center items-center text-center mb-20">
+                <div className="min-h-[30vh] flex flex-col justify-center items-center text-center mb-12">
                     <TextAnimation
                         text="L'excellence commence ici"
                         variants={{
@@ -38,7 +37,7 @@ const Manifesto = () => {
                 </div>
 
                 {/* Section 2: Team Up */}
-                <div className="min-h-[30vh] flex items-center text-left mb-20">
+                <div className="min-h-[25vh] flex items-center text-left mb-12">
                     <TextAnimation
                         as="h3"
                         letterAnime={true}
@@ -59,7 +58,7 @@ const Manifesto = () => {
                 </div>
 
                 {/* Section 3: Right Aligned */}
-                <div className="min-h-[30vh] flex justify-center items-center text-right mb-20">
+                <div className="min-h-[25vh] flex justify-center items-center text-right mb-12">
                     <TextAnimation
                         text="Du concept à la réalité"
                         direction="right"
@@ -68,7 +67,7 @@ const Manifesto = () => {
                 </div>
 
                 {/* Section 4: Final Statement */}
-                <div className="min-h-[30vh] flex justify-center items-center text-center">
+                <div className="min-h-[25vh] flex justify-center items-center text-center">
                     <TextAnimation
                         text="Rêvez grand, construisez durable."
                         direction="down"

@@ -4,15 +4,18 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { 
   Mail, 
   Phone, 
-  Send,
   User,
   Building2,
-  MessageSquare
+  MessageSquare,
+  Clock,
+  Paperclip,
+  X,
+  Image as ImageIcon
 } from "lucide-react";
 import {
   Accordion,
@@ -43,6 +46,8 @@ const Contact = () => {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [attachments, setAttachments] = useState<File[]>([]);
+  const [previewUrls, setPreviewUrls] = useState<string[]>([]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -58,6 +63,45 @@ const Contact = () => {
   const handleTypeChange = (type: "particulier" | "professionnel") => {
     setFormData((prev) => ({ ...prev, type }));
   };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      const newFiles = Array.from(files).filter(file => {
+        // Vérifier que c'est une image et que la taille est raisonnable (max 5MB)
+        const isImage = file.type.startsWith('image/');
+        const isSizeValid = file.size <= 5 * 1024 * 1024; // 5MB
+        return isImage && isSizeValid;
+      });
+      
+      if (newFiles.length !== files.length) {
+        toast.error("Seules les images sont acceptées (max 5MB par fichier)");
+      }
+      
+      const updatedFiles = [...attachments, ...newFiles].slice(0, 5); // Max 5 fichiers
+      setAttachments(updatedFiles);
+      
+      // Créer les URLs de prévisualisation
+      const newUrls = newFiles.map(file => URL.createObjectURL(file));
+      setPreviewUrls((prev) => [...prev, ...newUrls].slice(0, 5));
+    }
+  };
+
+  const removeAttachment = (index: number) => {
+    // Révoquer l'URL de prévisualisation
+    URL.revokeObjectURL(previewUrls[index]);
+    setAttachments((prev) => prev.filter((_, i) => i !== index));
+    setPreviewUrls((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  // Nettoyer les URLs lors du démontage
+  useEffect(() => {
+    return () => {
+      previewUrls.forEach((url) => {
+        URL.revokeObjectURL(url);
+      });
+    };
+  }, [previewUrls]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,6 +122,9 @@ const Contact = () => {
         type: "particulier",
         message: "",
       });
+      setAttachments([]);
+      previewUrls.forEach((url) => URL.revokeObjectURL(url));
+      setPreviewUrls([]);
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
@@ -155,7 +202,7 @@ const Contact = () => {
                       </div>
                       <div className="flex-1 pt-1.5 min-w-0">
                         <p className="font-semibold text-foreground mb-2 text-xs uppercase tracking-wider text-primary/70">Email</p>
-                        <p className="text-foreground text-sm leading-relaxed font-medium group-hover:text-primary transition-colors break-words" style={{ fontSize: '0.8393rem' }}>
+                        <p className="text-foreground text-sm leading-relaxed font-medium group-hover:text-primary transition-colors break-words" style={{ fontSize: '0.823rem' }}>
                           youcef.lebkiri.pro@gmail.com
                         </p>
                       </div>
@@ -175,16 +222,18 @@ const Contact = () => {
                         </p>
                       </div>
                     </a>
-                  </div>
-
-                  <div className="mt-8 pt-8 border-t border-border/60">
-                    <h3 className="font-semibold text-foreground mb-4 text-xs uppercase tracking-wider text-primary/70">
-                      Horaires de disponibilité
-                    </h3>
-                    <p className="text-foreground text-base leading-relaxed">
-                      Du lundi au vendredi<br />
-                      <span className="font-semibold text-primary">9h00 - 18h00</span>
-                    </p>
+                    <div className="flex items-start gap-4 group p-4 rounded-xl bg-gradient-to-br from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 hover:shadow-md hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-0.5">
+                      <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-300 shadow-sm">
+                        <Clock className="w-6 h-6 text-primary" />
+                      </div>
+                      <div className="flex-1 pt-1.5 min-w-0">
+                        <p className="font-semibold text-foreground mb-2 text-xs uppercase tracking-wider text-primary/70">Horaires de disponibilité</p>
+                        <p className="text-foreground text-sm leading-relaxed font-medium group-hover:text-primary transition-colors break-words">
+                          Du lundi au vendredi<br />
+                          <span className="font-semibold">9h00 - 18h00</span>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -319,6 +368,62 @@ const Contact = () => {
                     )}
                   </div>
 
+                  {/* File Attachments */}
+                  <div>
+                    <Label htmlFor="attachments" className="text-foreground mb-3 block text-sm font-semibold">
+                      <Paperclip className="w-4 h-4 inline mr-2 text-primary" />
+                      Pièces jointes (photos)
+                    </Label>
+                    <div className="space-y-3">
+                      <label
+                        htmlFor="attachments"
+                        className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-border/60 rounded-xl cursor-pointer hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group"
+                      >
+                        <ImageIcon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                        <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors">
+                          Cliquez pour ajouter des photos (max 5, 5MB par fichier)
+                        </span>
+                      </label>
+                      <input
+                        id="attachments"
+                        type="file"
+                        multiple
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="hidden"
+                      />
+                      
+                      {/* Preview des fichiers */}
+                      {attachments.length > 0 && (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                          {attachments.map((file, index) => (
+                            <div
+                              key={index}
+                              className="relative group aspect-square rounded-lg overflow-hidden border-2 border-border/60 bg-background/50"
+                            >
+                              <img
+                                src={previewUrls[index]}
+                                alt={`Preview ${index + 1}`}
+                                className="w-full h-full object-cover"
+                              />
+                              <button
+                                type="button"
+                                onClick={() => removeAttachment(index)}
+                                className="absolute top-2 right-2 w-6 h-6 rounded-full bg-destructive text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-destructive/90"
+                                aria-label="Supprimer"
+                              >
+                                <X className="w-4 h-4" />
+                              </button>
+                              <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs p-2 truncate">
+                                {file.name}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
                   <div className="pt-6">
                     <Button
                       type="submit"
@@ -327,14 +432,11 @@ const Contact = () => {
                       disabled={isSubmitting}
                       className="w-full sm:w-auto h-16 px-10 text-base font-semibold rounded-2xl bg-gradient-to-r from-primary via-primary to-primary/90 hover:from-primary/95 hover:via-primary/95 hover:to-primary shadow-2xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-500 border-0 relative overflow-hidden group"
                     >
-                      <span className="relative z-10 flex items-center gap-3">
+                      <span className="relative z-10">
                         {isSubmitting ? (
                           "Envoi en cours..."
                         ) : (
-                          <>
-                            <Send className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                            Envoyer le message
-                          </>
+                          "Envoyer"
                         )}
                       </span>
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
