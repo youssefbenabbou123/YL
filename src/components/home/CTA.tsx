@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const CTA = () => {
   return (
-    <section className="relative py-12 md:py-14 overflow-hidden bg-gradient-to-r from-sky-50 via-blue-100 to-blue-200">
+    <section className="relative py-12 md:py-14 overflow-hidden bg-gradient-to-r from-sky-50 via-blue-100 to-blue-300">
       {/* Decorative Pattern Overlay */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{

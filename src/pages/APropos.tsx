@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   Sparkles
 } from "lucide-react";
+import heroImage from "@/assets/apropos.png";
 
 const values = [
   {
@@ -46,21 +47,29 @@ const APropos = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-gradient-to-b from-background via-background to-secondary/30">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none" />
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImage}
+            alt="À propos de YL Solutions"
+            className="w-full h-full object-cover object-[center_65%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
+        </div>
 
-        <div className="container-yl relative z-10">
+        {/* Content */}
+        <div className="container-yl relative z-10 py-16 md:py-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
-              À propos de <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-primary/60">YL Solutions</span>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6 tracking-tight">
+              À propos de <span className="text-primary-foreground">YL Solutions</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+            <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed">
               Découvrez notre histoire, nos valeurs et notre engagement pour vous accompagner dans vos projets de travaux.
             </p>
           </motion.div>

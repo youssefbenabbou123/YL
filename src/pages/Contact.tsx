@@ -439,7 +439,7 @@ const Contact = () => {
                       variant="cta"
                       size="xl"
                       disabled={isSubmitting}
-                      className="w-full sm:w-auto h-16 px-10 text-base font-semibold rounded-2xl bg-gradient-to-r from-primary via-primary to-primary/90 hover:from-primary/95 hover:via-primary/95 hover:to-primary shadow-2xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-500 border-0 relative overflow-hidden group"
+                      className="w-full sm:w-auto h-16 px-10 text-base font-semibold rounded-full bg-gradient-to-r from-primary via-primary to-primary/90 hover:from-primary/95 hover:via-primary/95 hover:to-primary shadow-2xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-500 border-0 relative overflow-hidden group"
                     >
                       <span className="relative z-10">
                         {isSubmitting ? (

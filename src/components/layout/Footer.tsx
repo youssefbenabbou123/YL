@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-white text-primary">
-      <div className="container-yl section-padding pb-4">
+      <div className="container-yl pt-8 md:pt-12 pb-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
@@ -57,11 +57,12 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-primary mb-4">Nos services</h4>
             <ul className="space-y-3 text-sm text-primary/80">
-              <li>Rénovation intérieure</li>
-              <li>Rénovation extérieure</li>
-              <li>Travaux tous corps d'état</li>
-              <li>Dépannage</li>
-              <li>Aménagement</li>
+              <li>Gros œuvre</li>
+              <li>Second œuvre</li>
+              <li>Lots techniques</li>
+              <li>Finitions & équipements</li>
+              <li>Extérieurs</li>
+              <li>Spécifiques - sécurité - réglementaire</li>
             </ul>
           </div>
 

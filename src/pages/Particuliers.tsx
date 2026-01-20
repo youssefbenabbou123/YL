@@ -206,7 +206,7 @@ const Particuliers = () => {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-gradient-to-r from-sky-50 via-blue-100 to-blue-200">
+      <section className="section-padding bg-gradient-to-r from-sky-50 via-blue-100 to-blue-300">
         <div className="container-yl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
