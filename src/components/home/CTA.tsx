@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const CTA = () => {
   return (
-    <section className="relative section-padding overflow-hidden bg-secondary">
+    <section className="relative section-padding overflow-hidden bg-gradient-to-r from-sky-50 via-blue-100 to-blue-200">
       {/* Decorative Pattern Overlay */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -20,7 +20,7 @@ const CTA = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-3xl mx-auto text-center"
         >
           {/* Main Heading */}
           <motion.h2
@@ -28,7 +28,7 @@ const CTA = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6 leading-tight"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800 mb-6 leading-tight"
           >
             Prêt à démarrer votre projet ?
           </motion.h2>
@@ -39,7 +39,7 @@ const CTA = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-base text-slate-600 max-w-2xl mx-auto mb-6 leading-relaxed"
           >
             Contactez-nous dès maintenant pour discuter de vos besoins.
             <br className="hidden md:block" />
@@ -81,7 +81,7 @@ const CTA = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-12 pt-8 border-t border-border flex flex-wrap justify-center items-center gap-6 text-sm text-muted-foreground"
+            className="mt-12 pt-8 border-t border-slate-300 flex flex-wrap justify-center items-center gap-6 text-sm text-slate-600"
           >
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-primary" />

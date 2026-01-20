@@ -5,26 +5,26 @@ const steps = [
   {
     icon: MessageSquare,
     number: "01",
-    title: "Décrivez votre projet",
-    description: "Vous nous contactez et nous présentez vos besoins en travaux.",
+    title: "Qualification du besoin",
+    description: "Nous échangeons afin de comprendre précisément votre projet : nature des travaux, contraintes techniques, budget et délais.",
   },
   {
     icon: Search,
     number: "02",
     title: "Analyse et sélection",
-    description: "Nous analysons votre demande et sélectionnons les professionnels adaptés.",
+    description: "Votre demande est étudiée avec attention afin d'identifier les corps de métier concernés et sélectionner les intervenants les plus adaptés.",
   },
   {
     icon: Handshake,
     number: "03",
     title: "Mise en relation",
-    description: "Nous vous mettons en contact avec les artisans qualifiés pour votre projet.",
+    description: "Nous vous mettons en relation avec des professionnels qualifiés, sélectionnés selon leur expertise et la nature de votre projet.",
   },
   {
     icon: CheckCircle,
     number: "04",
     title: "Suivi personnalisé",
-    description: "Nous assurons le suivi de la mise en relation jusqu'à sa concrétisation.",
+    description: "Nous restons disponibles pour faciliter les échanges et assurer le bon déroulement de la mise en relation.",
   },
 ];
 
@@ -40,10 +40,10 @@ const HowItWorks = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Comment ça marche ?
+            Les étapes de votre mise en relation
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Un processus simple et transparent pour vous accompagner dans votre projet de travaux.
+            Un processus simple et structuré pour vous accompagner à chaque étape de votre projet de travaux.
           </p>
         </motion.div>
 

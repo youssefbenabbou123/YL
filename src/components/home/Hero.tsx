@@ -48,8 +48,8 @@ const Hero = () => {
                             transition={{ duration: 0.5, delay: 0.2 }}
                             className="text-lg md:text-xl text-muted-foreground mb-10 max-w-lg leading-relaxed font-light"
                         >
-                            YL Solutions connecte vos projets de travaux avec des professionnels qualifiés.
-                            Une solution simple, rapide et fiable pour l'excellence.
+                            YL Solutions met en relation vos projets de travaux avec des professionnels qualifiés.
+                            Un accompagnement simple, rapide et fiable.
                         </motion.p>
 
                         <motion.div
@@ -88,15 +88,19 @@ const Hero = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5, delay: 0.4 }}
-                            className="flex items-center gap-6 text-sm font-medium text-muted-foreground"
+                            className="flex flex-wrap items-center gap-6 text-sm font-medium text-muted-foreground"
                         >
                             <div className="flex items-center gap-2">
                                 <CheckCircle2 className="w-5 h-5 text-primary" />
-                                <span>Service 100% gratuit</span>
+                                <span>Service 100 % gratuit</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <CheckCircle2 className="w-5 h-5 text-primary" />
                                 <span>Professionnels vérifiés</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <CheckCircle2 className="w-5 h-5 text-primary" />
+                                <span>Accompagnement personnalisé</span>
                             </div>
                         </motion.div>
                     </div>

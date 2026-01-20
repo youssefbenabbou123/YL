@@ -81,7 +81,7 @@ const Particuliers = () => {
               adaptés à vos besoins et à votre budget.
             </p>
             <Link to="/contact">
-              <Button variant="ctaOutline" size="xl" className="group">
+              <Button variant="ctaOutline" size="xl" className="group rounded-full">
                 Décrire mon projet
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -206,7 +206,7 @@ const Particuliers = () => {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-secondary">
+      <section className="section-padding bg-gradient-to-r from-sky-50 via-blue-100 to-blue-200">
         <div className="container-yl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -215,17 +215,17 @@ const Particuliers = () => {
             transition={{ duration: 0.5 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800 mb-4">
               Prêt à lancer votre projet ?
             </h2>
-            <p className="text-base text-muted-foreground mb-6 max-w-2xl mx-auto">
+            <p className="text-base text-slate-600 mb-6 max-w-2xl mx-auto">
               Décrivez-nous votre projet et recevez une mise en relation avec des professionnels adaptés.
             </p>
             <Link to="/contact">
               <Button 
                 variant="cta"
                 size="xl" 
-                className="group"
+                className="group rounded-full"
               >
                 Nous contacter
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />

@@ -8,7 +8,6 @@ import {
   TrendingUp, 
   Calendar,
   Target,
-  Handshake,
   BadgeCheck
 } from "lucide-react";
 import heroImage from "@/assets/hero-professionnels.jpg";
@@ -94,7 +93,7 @@ const Professionnels = () => {
               dans votre zone d'intervention.
             </p>
             <Link to="/contact">
-              <Button variant="ctaOutline" size="xl" className="group">
+              <Button variant="ctaOutline" size="xl" className="group rounded-full">
                 Rejoindre le réseau
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -233,8 +232,7 @@ const Professionnels = () => {
                 ))}
               </ul>
             </div>
-            <div className="bg-primary rounded-2xl p-8 md:p-12">
-              <Handshake className="w-12 h-12 text-primary-foreground mb-6" />
+            <div className="bg-primary rounded-2xl p-8 md:p-12 text-center">
               <h3 className="text-2xl font-bold text-primary-foreground mb-4">
                 Un partenariat de confiance
               </h3>
@@ -244,7 +242,7 @@ const Professionnels = () => {
                 en vous apportant des clients qualifiés.
               </p>
               <Link to="/contact">
-                <Button variant="ctaOutline" size="lg" className="group">
+                <Button variant="ctaOutline" size="lg" className="group rounded-full">
                   Devenir partenaire
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -255,7 +253,7 @@ const Professionnels = () => {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-secondary">
+      <section className="section-padding bg-gradient-to-r from-sky-50 via-blue-100 to-blue-200">
         <div className="container-yl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -264,10 +262,10 @@ const Professionnels = () => {
             transition={{ duration: 0.5 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800 mb-4">
               Prêt à développer votre clientèle ?
             </h2>
-            <p className="text-base text-muted-foreground mb-6 max-w-2xl mx-auto">
+            <p className="text-base text-slate-600 mb-6 max-w-2xl mx-auto">
               Contactez-nous pour rejoindre notre réseau de professionnels et recevoir 
               des demandes de clients qualifiés.
             </p>
@@ -275,7 +273,7 @@ const Professionnels = () => {
               <Button 
                 variant="cta"
                 size="xl" 
-                className="group"
+                className="group rounded-full"
               >
                 Nous contacter
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
