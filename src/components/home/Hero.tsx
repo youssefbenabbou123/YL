@@ -88,18 +88,19 @@ const Hero = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5, delay: 0.4 }}
-                            className="flex flex-wrap items-center gap-6 text-sm font-medium text-muted-foreground"
+                            className="flex flex-nowrap items-center overflow-x-auto font-medium text-muted-foreground"
+                            style={{ gap: '16px', fontSize: '14px' }}
                         >
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="w-5 h-5 text-primary" />
+                            <div className="flex items-center whitespace-nowrap" style={{ gap: '6px' }}>
+                                <CheckCircle2 className="text-primary" style={{ width: '16px', height: '16px' }} />
                                 <span>Service 100 % gratuit</span>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="w-5 h-5 text-primary" />
+                            <div className="flex items-center whitespace-nowrap" style={{ gap: '6px' }}>
+                                <CheckCircle2 className="text-primary" style={{ width: '16px', height: '16px' }} />
                                 <span>Professionnels vérifiés</span>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="w-5 h-5 text-primary" />
+                            <div className="flex items-center whitespace-nowrap" style={{ gap: '6px' }}>
+                                <CheckCircle2 className="text-primary" style={{ width: '16px', height: '16px' }} />
                                 <span>Accompagnement personnalisé</span>
                             </div>
                         </motion.div>
