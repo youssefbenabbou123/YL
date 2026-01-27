@@ -46,6 +46,16 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/realisations" className="text-primary/80 hover:text-primary transition-colors text-sm">
+                  Nos réalisations
+                </Link>
+              </li>
+              <li>
+                <Link to="/a-propos" className="text-primary/80 hover:text-primary transition-colors text-sm">
+                  À propos
+                </Link>
+              </li>
+              <li>
                 <Link to="/contact" className="text-primary/80 hover:text-primary transition-colors text-sm">
                   Contact
                 </Link>
@@ -102,7 +112,9 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="#" 
+                  href="https://www.google.com/search?client=safari&hs=7xYU&sca_esv=4035e1ffac7aa00b&hl=fr-fr&sxsrf=ANbL-n4vHGLvcjERGT23tFpkhDcQodc1tA:1769347656182&kgmid=/g/11msryg6kj&q=Youcef+LEBKIRI+-+Apporteur+d%27affaire+BTP&shem=bdslc,ptotple,shrtsdl&shndl=30&source=sh/x/loc/act/m1/3&kgs=66ab16578941bfca&utm_source=bdslc,ptotple,shrtsdl,sh/x/loc/act/m1/3"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-3 text-primary/80 hover:text-primary transition-colors text-sm"
                 >
                   <Star className="w-4 h-4 flex-shrink-0" />

@@ -130,8 +130,8 @@ const Professionnels = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="card-elevated card-hover p-6 md:p-8"
               >
-                <div className="flex gap-5">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="flex gap-5 items-center">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 self-center">
                     <benefit.icon className="w-6 h-6 text-primary" />
                   </div>
                   <div>
@@ -175,7 +175,7 @@ const Professionnels = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card-elevated p-6"
+                className="card-elevated p-6 text-center flex flex-col items-center"
               >
                 <span className="text-4xl font-bold text-primary/20 mb-4 block">
                   {step.number}

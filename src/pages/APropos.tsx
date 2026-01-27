@@ -9,6 +9,7 @@ import {
   Sparkles
 } from "lucide-react";
 import heroImage from "@/assets/apropos.png";
+import founderImage from "@/assets/YOUCEF LEBKIRI.jpeg";
 
 const values = [
   {
@@ -78,7 +79,7 @@ const APropos = () => {
 
       {/* Le mot du fondateur */}
       <section className="section-padding bg-background">
-        <div className="container-yl max-w-4xl">
+        <div className="container-yl max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -86,33 +87,36 @@ const APropos = () => {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative p-8 md:p-12 lg:p-16 bg-gradient-to-br from-background via-background to-secondary/30 border-2 border-border/60 rounded-3xl shadow-xl shadow-black/5 overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+            <div className="relative p-8 md:p-12 lg:p-16 bg-white rounded-3xl shadow-2xl shadow-black/20 overflow-hidden">
+              {/* Guillemets décoratifs */}
+              <div className="absolute top-4 left-4 text-7xl md:text-9xl text-muted-foreground/30 font-serif leading-none select-none">
+                &ldquo;
+              </div>
+              <div className="absolute bottom-4 right-4 text-7xl md:text-9xl text-muted-foreground/30 font-serif leading-none select-none">
+                &rdquo;
+              </div>
               
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Users className="w-6 h-6 text-primary" />
-                  </div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                    Le mot du fondateur
-                  </h2>
-                </div>
+              <div className="relative z-10 text-center">
+                {/* Titre centré */}
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
+                  Le mot du fondateur
+                </h2>
 
-                <div className="prose prose-lg max-w-none">
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                {/* Texte centré */}
+                <div className="space-y-6 mb-10">
+                  <p className="text-muted-foreground text-lg leading-relaxed">
                     Bienvenue chez YL Solutions.
                   </p>
                   
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                  <p className="text-muted-foreground text-lg leading-relaxed">
                     Fort de mon expérience dans le secteur du bâtiment et des travaux, j'ai créé YL Solutions avec une vision simple : faciliter la mise en relation entre les porteurs de projets et les professionnels qualifiés.
                   </p>
                   
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                  <p className="text-muted-foreground text-lg leading-relaxed">
                     Nous savons combien il peut être difficile de trouver le bon professionnel pour réaliser ses travaux. Entre les recherches interminables, les doutes sur la fiabilité des intervenants et la complexité de gérer plusieurs corps de métier, beaucoup de projets restent en suspens ou se concrétisent dans des conditions non optimales.
                   </p>
                   
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                  <p className="text-muted-foreground text-lg leading-relaxed">
                     C'est pourquoi YL Solutions s'engage à être votre partenaire de confiance. Nous sélectionnons rigoureusement chaque professionnel de notre réseau, vérifions leurs compétences et leurs assurances, et vous accompagnons tout au long de votre projet.
                   </p>
                   
@@ -121,11 +125,21 @@ const APropos = () => {
                   </p>
                 </div>
 
-                <div className="mt-10 pt-8 border-t border-border/60">
-                  <p className="text-foreground font-semibold text-lg mb-1">
-                    Youcef Lebkiri
+                {/* Photo du fondateur */}
+                <div className="flex flex-col items-center mb-6">
+                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg mb-4">
+                    <img
+                      src={founderImage}
+                      alt="Youcef LEBKIRI"
+                      className="w-full h-full object-cover scale-110"
+                    />
+                  </div>
+                  
+                  {/* Nom et titre */}
+                  <p className="text-foreground font-bold text-xl md:text-2xl mb-1">
+                    Youcef LEBKIRI
                   </p>
-                  <p className="text-muted-foreground">
+                  <p className="text-primary text-base md:text-lg">
                     Fondateur de YL Solutions
                   </p>
                 </div>
@@ -166,7 +180,7 @@ const APropos = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group relative bg-background rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-border hover:border-primary/20 overflow-hidden"
               >
-                <div className="relative z-10">
+                <div className="relative z-10 text-center flex flex-col items-center">
                   <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
                     <value.icon className="w-8 h-8 text-primary" />
                   </div>

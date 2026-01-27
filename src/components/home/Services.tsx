@@ -1,16 +1,8 @@
 import { motion } from "framer-motion";
-import {
-  Building2,
-  Home,
-  Wrench,
-  Sparkles,
-  TreePine,
-  Shield
-} from "lucide-react";
 
 const services = [
   {
-    icon: Building2,
+    emoji: "🏗️",
     title: "Gros œuvre (structure)",
     items: [
       "VRD (voirie et réseaux divers)",
@@ -22,7 +14,7 @@ const services = [
     ],
   },
   {
-    icon: Home,
+    emoji: "🛠️",
     title: "Second œuvre (aménagement intérieur)",
     items: [
       "Cloisons / doublages / plafonds",
@@ -33,7 +25,7 @@ const services = [
     ],
   },
   {
-    icon: Wrench,
+    emoji: "⚙️",
     title: "Lots techniques (MEP)",
     items: [
       "Électricité",
@@ -44,7 +36,7 @@ const services = [
     ],
   },
   {
-    icon: Sparkles,
+    emoji: "🎨",
     title: "Finitions & équipements",
     items: [
       "Cuisine (pose + raccordements)",
@@ -56,7 +48,7 @@ const services = [
     ],
   },
   {
-    icon: TreePine,
+    emoji: "🌳",
     title: "Extérieurs",
     items: [
       "Aménagement paysager",
@@ -68,7 +60,7 @@ const services = [
     ],
   },
   {
-    icon: Shield,
+    emoji: "⚠️",
     title: "Spécifiques / sécurité / réglementaire",
     items: [
       "Désamiantage",
@@ -117,7 +109,7 @@ const Services = () => {
             >
               <div className="relative z-10 flex flex-col items-center">
                 <div className="w-16 h-16 rounded-2xl bg-primary-foreground/10 flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                  <service.icon className="w-8 h-8 text-primary-foreground" />
+                  <span className="text-4xl">{service.emoji}</span>
                 </div>
 
                 <h3 className="text-xl font-bold text-primary-foreground mb-4">

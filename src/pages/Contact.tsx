@@ -13,7 +13,8 @@ import {
   Clock,
   Paperclip,
   X,
-  Image as ImageIcon
+  Image as ImageIcon,
+  File
 } from "lucide-react";
 import {
   Accordion,
@@ -68,28 +69,34 @@ const Contact = () => {
     const files = e.target.files;
     if (files) {
       const newFiles = Array.from(files).filter(file => {
-        // Vérifier que c'est une image et que la taille est raisonnable (max 5MB)
-        const isImage = file.type.startsWith('image/');
-        const isSizeValid = file.size <= 5 * 1024 * 1024; // 5MB
-        return isImage && isSizeValid;
+        // Vérifier que la taille est raisonnable (max 10MB par fichier)
+        const isSizeValid = file.size <= 10 * 1024 * 1024; // 10MB
+        return isSizeValid;
       });
       
       if (newFiles.length !== files.length) {
-        toast.error("Seules les images sont acceptées (max 5MB par fichier)");
+        toast.error("Les fichiers doivent faire moins de 10MB chacun");
       }
       
       const updatedFiles = [...attachments, ...newFiles].slice(0, 5); // Max 5 fichiers
       setAttachments(updatedFiles);
       
-      // Créer les URLs de prévisualisation
-      const newUrls = newFiles.map(file => URL.createObjectURL(file));
+      // Créer les URLs de prévisualisation uniquement pour les images
+      const newUrls = newFiles.map(file => {
+        if (file.type.startsWith('image/')) {
+          return URL.createObjectURL(file);
+        }
+        return '';
+      });
       setPreviewUrls((prev) => [...prev, ...newUrls].slice(0, 5));
     }
   };
 
   const removeAttachment = (index: number) => {
-    // Révoquer l'URL de prévisualisation
-    URL.revokeObjectURL(previewUrls[index]);
+    // Révoquer l'URL de prévisualisation si elle existe (pour les images)
+    if (previewUrls[index]) {
+      URL.revokeObjectURL(previewUrls[index]);
+    }
     setAttachments((prev) => prev.filter((_, i) => i !== index));
     setPreviewUrls((prev) => prev.filter((_, i) => i !== index));
   };
@@ -381,53 +388,70 @@ const Contact = () => {
                   {/* File Attachments */}
                   <div>
                     <Label htmlFor="attachments" className="text-foreground mb-3 block text-sm font-semibold">
-                      Pièces jointes (photos)
+                      Pièces jointes 
                     </Label>
                     <div className="space-y-3">
                       <label
                         htmlFor="attachments"
                         className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-border/60 rounded-xl cursor-pointer hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group"
                       >
-                        <ImageIcon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                        <Paperclip className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                         <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors">
-                          Cliquez pour ajouter des photos (max 5, 5MB par fichier)
+                          Cliquez pour ajouter des documents/fichiers (max 5, 10MB par fichier)
                         </span>
                       </label>
                       <input
                         id="attachments"
                         type="file"
                         multiple
-                        accept="image/*"
                         onChange={handleFileChange}
                         className="hidden"
                       />
                       
-                      {/* Preview des fichiers */}
+                      {/* Liste des fichiers */}
                       {attachments.length > 0 && (
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                          {attachments.map((file, index) => (
-                            <div
-                              key={index}
-                              className="relative group aspect-square rounded-lg overflow-hidden border-2 border-border/60 bg-background/50"
-                            >
-                              <img
-                                src={previewUrls[index]}
-                                alt={`Preview ${index + 1}`}
-                                className="w-full h-full object-cover"
-                              />
-                              <button
-                                type="button"
-                                onClick={() => removeAttachment(index)}
-                                className="absolute top-2 right-2 w-6 h-6 rounded-full bg-destructive text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-destructive/90"
-                                aria-label="Supprimer"
+                        <div className="space-y-2">
+                          {attachments.map((file, index) => {
+                            const isImage = file.type.startsWith('image/');
+                            const previewUrl = previewUrls[index];
+                            
+                            return (
+                              <div
+                                key={index}
+                                className="relative group flex items-center gap-3 p-3 rounded-lg border-2 border-border/60 bg-background/50 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
                               >
-                                <X className="w-4 h-4" />
-                              </button>
-                              <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs p-2 truncate">
-                                {file.name}
+                                {isImage && previewUrl ? (
+                                  <div className="relative w-16 h-16 rounded-lg overflow-hidden border border-border/60 flex-shrink-0">
+                                    <img
+                                      src={previewUrl}
+                                      alt={`Preview ${index + 1}`}
+                                      className="w-full h-full object-cover"
+                                    />
+                                  </div>
+                                ) : (
+                                  <div className="w-16 h-16 rounded-lg bg-secondary border border-border/60 flex items-center justify-center flex-shrink-0">
+                                    <File className="w-8 h-8 text-muted-foreground" />
+                                  </div>
+                                )}
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-sm font-medium text-foreground truncate">
+                                    {file.name}
+                                  </p>
+                                  <p className="text-xs text-muted-foreground">
+                                    {(file.size / 1024 / 1024).toFixed(2)} MB
+                                  </p>
+                                </div>
+                                <button
+                                  type="button"
+                                  onClick={() => removeAttachment(index)}
+                                  className="w-8 h-8 rounded-full bg-destructive text-white flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity hover:bg-destructive/90 flex-shrink-0"
+                                  aria-label="Supprimer"
+                                >
+                                  <X className="w-4 h-4" />
+                                </button>
                               </div>
-                            </div>
-                          ))}
+                            );
+                          })}
                         </div>
                       )}
                     </div>

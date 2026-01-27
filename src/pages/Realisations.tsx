@@ -12,14 +12,6 @@ const partners = [
   "IRG bâtiment"
 ];
 
-// Placeholder for projects - will be filled with actual data
-const projects: Array<{
-  id: string;
-  title: string;
-  location: string;
-  image: string;
-}> = [];
-
 const Realisations = () => {
   return (
     <Layout>
@@ -98,65 +90,6 @@ const Realisations = () => {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section className="section-padding bg-background pt-8">
-        <div className="container-yl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12 text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Voici la liste des réalisations
-            </h2>
-          </motion.div>
-
-          {/* Projects Grid */}
-          {projects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative rounded-2xl overflow-hidden bg-background border border-border shadow-sm hover:shadow-lg transition-all duration-300"
-                >
-                  {/* Location Tag */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-foreground shadow-sm">
-                      {project.location}
-                    </span>
-                  </div>
-                  
-                  {/* Image */}
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  
-                  {/* Title */}
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold text-foreground">
-                      {project.title}
-                    </h3>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12 text-muted-foreground">
-              <p>Les réalisations seront ajoutées prochainement.</p>
-            </div>
-          )}
-        </div>
-      </section>
     </Layout>
   );
 };
