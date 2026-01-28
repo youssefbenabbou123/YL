@@ -29,33 +29,33 @@ const Footer = () => {
           {/* Navigation */}
           <div className="lg:translate-x-20">
             <h4 className="font-semibold text-primary mb-4">Navigation</h4>
-            <ul className="space-y-3">
-              <li>
+            <ul className="flex flex-col gap-[10px]">
+              <li className="h-5 flex items-center">
                 <Link to="/" className="text-primary/80 hover:text-primary transition-colors text-sm">
                   Accueil
                 </Link>
               </li>
-              <li>
+              <li className="h-5 flex items-center">
                 <Link to="/particuliers" className="text-primary/80 hover:text-primary transition-colors text-sm">
                   Particuliers
                 </Link>
               </li>
-              <li>
+              <li className="h-5 flex items-center">
                 <Link to="/professionnels" className="text-primary/80 hover:text-primary transition-colors text-sm">
                   Professionnels
                 </Link>
               </li>
-              <li>
+              <li className="h-5 flex items-center">
                 <Link to="/realisations" className="text-primary/80 hover:text-primary transition-colors text-sm">
                   Nos réalisations
                 </Link>
               </li>
-              <li>
+              <li className="h-5 flex items-center">
                 <Link to="/a-propos" className="text-primary/80 hover:text-primary transition-colors text-sm">
                   À propos
                 </Link>
               </li>
-              <li>
+              <li className="h-5 flex items-center">
                 <Link to="/contact" className="text-primary/80 hover:text-primary transition-colors text-sm">
                   Contact
                 </Link>
@@ -66,21 +66,21 @@ const Footer = () => {
           {/* Services */}
           <div>
             <h4 className="font-semibold text-primary mb-4">Nos services</h4>
-            <ul className="space-y-3 text-sm text-primary/80">
-              <li>Gros œuvre</li>
-              <li>Second œuvre</li>
-              <li>Lots techniques</li>
-              <li>Finitions & équipements</li>
-              <li>Extérieurs</li>
-              <li>Spécifiques - sécurité - réglementaire</li>
+            <ul className="flex flex-col gap-[10px] text-sm text-primary/80">
+              <li className="h-5 flex items-center">Gros œuvre</li>
+              <li className="h-5 flex items-center">Second œuvre</li>
+              <li className="h-5 flex items-center">Lots techniques</li>
+              <li className="h-5 flex items-center">Finitions & équipements</li>
+              <li className="h-5 flex items-center">Extérieurs</li>
+              <li className="h-5 flex items-center">Spécifiques - sécurité - réglementaire</li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
             <h4 className="font-semibold text-primary mb-4">Contact</h4>
-            <ul className="space-y-3">
-              <li>
+            <ul className="flex flex-col gap-[10px]">
+              <li className="h-5 flex items-center">
                 <a 
                   href="mailto:youcef.lebkiri.pro@gmail.com" 
                   className="flex items-center gap-3 text-primary/80 hover:text-primary transition-colors text-sm"
@@ -89,7 +89,7 @@ const Footer = () => {
                   <span>youcef.lebkiri.pro@gmail.com</span>
                 </a>
               </li>
-              <li>
+              <li className="h-5 flex items-center">
                 <a 
                   href="tel:+33627104458" 
                   className="flex items-center gap-3 text-primary/80 hover:text-primary transition-colors text-sm"
@@ -98,19 +98,19 @@ const Footer = () => {
                   <span>06 27 10 44 58</span>
                 </a>
               </li>
-              <li>
-                <div className="flex items-start gap-3 text-primary/80 text-sm">
-                  <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
+              <li className="h-5 flex items-center">
+                <div className="flex items-center gap-3 text-primary/80 text-sm">
+                  <MapPin className="w-4 h-4 flex-shrink-0" />
                   <span>France</span>
                 </div>
               </li>
-              <li>
+              <li className="h-5 flex items-center">
                 <div className="flex items-center gap-3 text-primary/80 text-sm">
                   <Clock className="w-4 h-4 flex-shrink-0" />
                   <span>Lundi - Vendredi : 9h00 - 18h00</span>
                 </div>
               </li>
-              <li>
+              <li className="h-5 flex items-center">
                 <a 
                   href="https://www.google.com/search?client=safari&hs=7xYU&sca_esv=4035e1ffac7aa00b&hl=fr-fr&sxsrf=ANbL-n4vHGLvcjERGT23tFpkhDcQodc1tA:1769347656182&kgmid=/g/11msryg6kj&q=Youcef+LEBKIRI+-+Apporteur+d%27affaire+BTP&shem=bdslc,ptotple,shrtsdl&shndl=30&source=sh/x/loc/act/m1/3&kgs=66ab16578941bfca&utm_source=bdslc,ptotple,shrtsdl,sh/x/loc/act/m1/3"
                   target="_blank"

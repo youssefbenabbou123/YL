@@ -38,7 +38,7 @@ const PolitiqueCookies = () => {
 
           {/* Content Cards */}
           <div className="space-y-6">
-            {/* Card 1 */}
+            {/* Card 1 - Cookies */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -46,38 +46,23 @@ const PolitiqueCookies = () => {
               className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-border/50"
             >
               <h2 className="text-xl font-bold text-foreground mb-4">
-                YL Solutions
+                Cookies
               </h2>
-              <div className="space-y-3 text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Le site utilise des cookies pour mesurer l'audience et améliorer l'expérience utilisateur.
+                  Le site utilise des cookies pour :
                 </p>
+                <ul className="space-y-2 ml-4">
+                  <li>• Mesurer l'audience</li>
+                  <li>• Améliorer l'expérience utilisateur</li>
+                </ul>
                 <p>
-                  Lors de votre première visite, un bandeau de consentement permet d'accepter ou de refuser tout ou partie des cookies.
-                </p>
-                <p>
-                  Vous pouvez également gérer les cookies via les paramètres de votre navigateur.
+                  Lors de votre première visite, un bandeau de gestion du consentement vous permet d'accepter ou de refuser tout ou partie des cookies. Vous pouvez également gérer les cookies via les paramètres de votre navigateur.
                 </p>
               </div>
             </motion.div>
 
-            {/* Card 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-border/50"
-            >
-              <h2 className="text-xl font-bold text-foreground mb-4">
-                Finalités
-              </h2>
-              <ul className="space-y-2 text-muted-foreground leading-relaxed">
-                <li>• Mesurer l'audience</li>
-                <li>• Améliorer l'expérience utilisateur</li>
-              </ul>
-            </motion.div>
-
-            {/* Card 3 */}
+            {/* Card 3 - Durée de conservation */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -90,6 +75,40 @@ const PolitiqueCookies = () => {
               <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>
                   Les cookies sont conservés jusqu'à 13 mois maximum après leur dépôt.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 4 - Sécurité */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-border/50"
+            >
+              <h2 className="text-xl font-bold text-foreground mb-4">
+                Sécurité
+              </h2>
+              <div className="space-y-3 text-muted-foreground leading-relaxed">
+                <p>
+                  YL Solutions met en œuvre toutes les mesures techniques et organisationnelles nécessaires pour garantir la sécurité et la confidentialité des données personnelles.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 5 - Modifications */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-border/50"
+            >
+              <h2 className="text-xl font-bold text-foreground mb-4">
+                Modifications
+              </h2>
+              <div className="space-y-3 text-muted-foreground leading-relaxed">
+                <p>
+                  La présente politique de confidentialité peut être modifiée à tout moment afin de garantir sa conformité avec la législation en vigueur. Nous vous conseillons de consulter régulièrement cette page.
                 </p>
               </div>
             </motion.div>

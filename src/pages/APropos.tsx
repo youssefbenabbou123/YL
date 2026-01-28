@@ -178,13 +178,9 @@ const APropos = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative bg-background rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-border hover:border-primary/20 overflow-hidden"
+                className="group relative bg-background rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-border hover:border-primary/20 overflow-hidden max-w-sm mx-auto"
               >
                 <div className="relative z-10 text-center flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                    <value.icon className="w-8 h-8 text-primary" />
-                  </div>
-
                   <h3 className="text-xl font-bold text-foreground mb-3">
                     {value.title}
                   </h3>

@@ -483,7 +483,7 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-[#021633]">
         <div className="container-yl max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -492,10 +492,10 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground tracking-tight mb-4">
               FAQ
             </h2>
-            <p className="text-muted-foreground text-lg mb-8">
+            <p className="text-primary-foreground/80 text-lg mb-8">
               Retrouvez les réponses aux questions les plus courantes
             </p>
             
@@ -551,7 +551,7 @@ const Contact = () => {
                   <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
                     Comment effectuer une demande de travaux ?
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
+                  <AccordionContent className="text-foreground/90 leading-relaxed pb-6 text-base">
                     La demande s'effectue directement via notre formulaire en ligne. Après réception, nous vous contactons afin de valider les informations transmises et de qualifier précisément votre besoin.
                   </AccordionContent>
                 </AccordionItem>
