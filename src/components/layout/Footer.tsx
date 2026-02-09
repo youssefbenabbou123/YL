@@ -136,24 +136,22 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-primary/20">
-          <ScrollReveal width="100%" delay={0.5}>
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-              <p className="text-primary/70 text-sm font-medium">
-                © {currentYear} YL Solutions. Tous droits réservés.
-              </p>
-              <div className="flex flex-wrap gap-4 md:gap-8 justify-center md:justify-end">
-                <Link to="/mentions-legales" className="text-primary/70 hover:text-primary text-sm font-medium transition-colors hover:underline underline-offset-4">
-                  Mentions légales
-                </Link>
-                <Link to="/politique-confidentialite" className="text-primary/70 hover:text-primary text-sm font-medium transition-colors hover:underline underline-offset-4">
-                  Politique de confidentialité
-                </Link>
-                <Link to="/politique-cookies" className="text-primary/70 hover:text-primary text-sm font-medium transition-colors hover:underline underline-offset-4">
-                  Politique cookies
-                </Link>
-              </div>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <p className="text-primary text-sm font-medium">
+              © {currentYear} YL Solutions. Tous droits réservés.
+            </p>
+            <div className="flex flex-wrap gap-4 md:gap-8 justify-center md:justify-end">
+              <Link to="/mentions-legales" className="text-primary hover:text-primary/80 text-sm font-medium transition-colors hover:underline underline-offset-4">
+                Mentions légales
+              </Link>
+              <Link to="/politique-confidentialite" className="text-primary hover:text-primary/80 text-sm font-medium transition-colors hover:underline underline-offset-4">
+                Politique de confidentialité
+              </Link>
+              <Link to="/politique-cookies" className="text-primary hover:text-primary/80 text-sm font-medium transition-colors hover:underline underline-offset-4">
+                Politique cookies
+              </Link>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </div>
     </footer>
