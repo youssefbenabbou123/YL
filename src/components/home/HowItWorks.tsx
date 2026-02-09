@@ -31,7 +31,7 @@ const steps = [
 const HowItWorks = () => {
   return (
     <section className="section-padding bg-background">
-      <div className="container-yl">
+      <div className="container-yl max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -39,45 +39,39 @@ const HowItWorks = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Les étapes de votre mise en relation
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Un processus simple et structuré pour vous accompagner à chaque étape de votre projet de travaux.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {steps.map((step, index) => (
             <motion.div
               key={step.number}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="relative"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-3xl p-8 border border-border/60 shadow-sm hover:shadow-lg transition-all duration-300 hover:border-primary/30"
             >
-              {/* Connector Line */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-border" />
-              )}
-
-              <div className="text-center">
-                <div className="relative inline-flex">
-                  <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mb-4">
-                    <step.icon className="w-7 h-7 text-primary-foreground" />
-                  </div>
-                  <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-secondary text-primary text-sm font-bold flex items-center justify-center">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="flex-shrink-0">
+                  <div className="text-5xl font-bold text-primary/20 leading-none">
                     {step.number}
-                  </span>
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {step.description}
-                </p>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-foreground mb-3">
+                    {step.title}
+                  </h3>
+                </div>
               </div>
+              <p className="text-muted-foreground leading-relaxed">
+                {step.description}
+              </p>
             </motion.div>
           ))}
         </div>

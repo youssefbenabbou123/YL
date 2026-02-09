@@ -40,10 +40,11 @@ const PolitiqueCookies = () => {
           <div className="space-y-6">
             {/* Card 1 - Cookies */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-border/50"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-[#021633]/10 rounded-2xl p-8 md:p-10 border border-border/30"
             >
               <h2 className="text-xl font-bold text-foreground mb-4">
                 Cookies
@@ -64,10 +65,11 @@ const PolitiqueCookies = () => {
 
             {/* Card 3 - Durée de conservation */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-border/50"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-[#021633]/10 rounded-2xl p-8 md:p-10 border border-border/30"
             >
               <h2 className="text-xl font-bold text-foreground mb-4">
                 Durée de conservation
@@ -81,10 +83,11 @@ const PolitiqueCookies = () => {
 
             {/* Card 4 - Sécurité */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-border/50"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-[#021633]/10 rounded-2xl p-8 md:p-10 border border-border/30"
             >
               <h2 className="text-xl font-bold text-foreground mb-4">
                 Sécurité
@@ -98,10 +101,11 @@ const PolitiqueCookies = () => {
 
             {/* Card 5 - Modifications */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-border/50"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-[#021633]/10 rounded-2xl p-8 md:p-10 border border-border/30"
             >
               <h2 className="text-xl font-bold text-foreground mb-4">
                 Modifications

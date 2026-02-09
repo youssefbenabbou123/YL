@@ -1,46 +1,28 @@
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
-import { 
-  Heart,
-  Target,
-  Users,
-  Shield,
-  CheckCircle2,
-  Sparkles
-} from "lucide-react";
 import heroImage from "@/assets/apropos.png";
 import founderImage from "@/assets/YOUCEF LEBKIRI.jpeg";
 
 const values = [
   {
-    icon: Target,
-    title: "Excellence",
-    description: "Nous visons l'excellence dans chaque mise en relation, en sélectionnant uniquement les professionnels les plus qualifiés et fiables.",
+    title: "Sélection rigoureuse",
+    description: "Nous collaborons uniquement avec des professionnels identifiés, qualifiés et assurés.",
+    gradient: "from-blue-500 via-cyan-500 to-teal-500"
   },
   {
-    icon: Heart,
-    title: "Confiance",
-    description: "La confiance est au cœur de notre approche. Nous construisons des relations durables basées sur la transparence et l'intégrité.",
+    title: "Clarté",
+    description: "Des échanges simples, des informations transparentes et une vision claire à chaque étape du projet.",
+    gradient: "from-purple-500 via-pink-500 to-rose-500"
   },
   {
-    icon: Users,
-    title: "Proximité",
-    description: "Un accompagnement personnalisé et humain pour chaque projet, avec un interlocuteur dédié à votre écoute.",
+    title: "Fiabilité du réseau",
+    description: "Un réseau construit dans la durée, fondé sur la qualité des interventions et le sérieux des partenaires.",
+    gradient: "from-orange-500 via-amber-500 to-yellow-500"
   },
   {
-    icon: Shield,
-    title: "Fiabilité",
-    description: "Nous garantissons la qualité de notre réseau en vérifiant rigoureusement chaque professionnel partenaire.",
-  },
-  {
-    icon: Sparkles,
-    title: "Innovation",
-    description: "Nous adaptons nos services aux évolutions du secteur pour vous offrir toujours la meilleure expérience.",
-  },
-  {
-    icon: CheckCircle2,
-    title: "Engagement",
-    description: "Nous nous engageons à vous accompagner jusqu'à la réussite de votre projet, avec un suivi continu et réactif.",
+    title: "Accompagnement",
+    description: "Un suivi structuré pour orienter chaque projet vers les interlocuteurs les plus adaptés.",
+    gradient: "from-green-500 via-emerald-500 to-lime-500"
   },
 ];
 
@@ -103,25 +85,25 @@ const APropos = () => {
                 </h2>
 
                 {/* Texte centré */}
-                <div className="space-y-6 mb-10">
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Bienvenue chez YL Solutions.
+                <div className="space-y-6 mb-10 text-muted-foreground text-lg leading-relaxed max-w-4xl mx-auto">
+                  <p>
+                    L'entreprise est née d'une volonté simple : structurer les échanges entre clients et intervenants afin de faciliter la réalisation des travaux.
                   </p>
                   
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Fort de mon expérience dans le secteur du bâtiment et des travaux, j'ai créé YL Solutions avec une vision simple : faciliter la mise en relation entre les porteurs de projets et les professionnels qualifiés.
+                  <p>
+                    Nous collaborons avec un réseau de professionnels sélectionnés pour leur sérieux, leurs compétences et leurs assurances.
                   </p>
                   
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Nous savons combien il peut être difficile de trouver le bon professionnel pour réaliser ses travaux. Entre les recherches interminables, les doutes sur la fiabilité des intervenants et la complexité de gérer plusieurs corps de métier, beaucoup de projets restent en suspens ou se concrétisent dans des conditions non optimales.
+                  <p>
+                    Notre rôle est d'orienter chaque projet vers les interlocuteurs les plus adaptés et d'assurer un cadre clair tout au long du processus.
                   </p>
                   
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    C'est pourquoi YL Solutions s'engage à être votre partenaire de confiance. Nous sélectionnons rigoureusement chaque professionnel de notre réseau, vérifions leurs compétences et leurs assurances, et vous accompagnons tout au long de votre projet.
+                  <p>
+                    YL Solutions s'engage à proposer un accompagnement fiable, transparent et efficace, au service de projets menés dans de bonnes conditions.
                   </p>
                   
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Notre mission : vous faire gagner du temps, vous rassurer et vous permettre de concrétiser vos projets de travaux en toute sérénité.
+                  <p className="font-medium text-foreground italic">
+                    "Notre objectif est simple : faciliter vos démarches, sécuriser votre projet et vous permettre d'avancer avec clarté et sérénité."
                   </p>
                 </div>
 
@@ -150,10 +132,7 @@ const APropos = () => {
       </section>
 
       {/* Nos valeurs */}
-      <section className="section-padding bg-secondary/30 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none" />
-
+      <section className="section-padding bg-slate-50 relative overflow-hidden">
         <div className="container-yl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -165,12 +144,10 @@ const APropos = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
               Nos valeurs
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-              Les principes qui guident notre action et notre engagement au quotidien
-            </p>
+            <div className="w-24 h-1.5 bg-primary mx-auto rounded-full mb-6" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
@@ -178,16 +155,33 @@ const APropos = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative bg-background rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-border hover:border-primary/20 overflow-hidden max-w-sm mx-auto"
+                className="group relative h-full"
               >
-                <div className="relative z-10 text-center flex flex-col items-center">
-                  <h3 className="text-xl font-bold text-foreground mb-3">
-                    {value.title}
-                  </h3>
+                {/* Card Container */}
+                <div className="relative h-full bg-white rounded-2xl p-1 overflow-hidden transition-all duration-500 hover:-translate-y-2 shadow-sm hover:shadow-xl">
+                  
+                  {/* Animated Gradient Border Layer */}
+                  <div className={`absolute inset-0 bg-gradient-to-r ${value.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`} />
+                  
+                  {/* Inner Content Container */}
+                  <div className="relative h-full bg-white rounded-xl p-8 md:p-10 flex flex-col justify-center border border-border/50 group-hover:border-transparent transition-colors duration-300">
+                    
+                    {/* Title */}
+                    <h3 className="text-2xl font-bold text-foreground mb-4 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-foreground group-hover:to-foreground/70 transition-all duration-300">
+                      {value.title}
+                    </h3>
 
-                  <p className="text-muted-foreground leading-relaxed">
-                    {value.description}
-                  </p>
+                    {/* Animated Divider */}
+                    <div className="w-12 h-1 bg-gradient-to-r from-primary/20 to-transparent mb-6 rounded-full group-hover:w-20 group-hover:from-primary group-hover:to-primary/50 transition-all duration-500 ease-out" />
+
+                    {/* Description */}
+                    <p className="text-muted-foreground text-lg leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
+                      {value.description}
+                    </p>
+
+                    {/* Corner Glow */}
+                    <div className={`absolute -bottom-10 -right-10 w-32 h-32 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-500`} />
+                  </div>
                 </div>
               </motion.div>
             ))}

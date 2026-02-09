@@ -38,64 +38,160 @@ const PolitiqueConfidentialite = () => {
 
           {/* Content Cards */}
           <div className="space-y-6">
-            {/* Card 1 */}
+            {/* Introduction */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-border/50"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-[#021633]/10 rounded-2xl p-8 md:p-10 border border-border/30"
             >
               <h2 className="text-xl font-bold text-foreground mb-4">
-                YL Solutions
+                Introduction
               </h2>
               <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>
-                  Le site utilise des données personnelles pour améliorer l'expérience utilisateur et assurer le bon fonctionnement des services.
+                  La présente politique de confidentialité a pour but d'informer les utilisateurs du site sur la manière dont sont collectées, utilisées et protégées leurs données personnelles.
                 </p>
                 <p>
-                  Lors de votre première visite, une information vous permet de comprendre comment vos données sont collectées et utilisées.
-                </p>
-                <p>
-                  Vous pouvez également gérer vos données personnelles via les paramètres de votre compte ou en nous contactant directement.
+                  YL Solutions s'engage à ce que la collecte et le traitement de vos données soient conformes au Règlement Général sur la Protection des Données (RGPD) et à la législation française en vigueur.
                 </p>
               </div>
             </motion.div>
 
-            {/* Card 2 */}
+            {/* Responsable du traitement */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-border/50"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-[#021633]/10 rounded-2xl p-8 md:p-10 border border-border/30"
+            >
+              <h2 className="text-xl font-bold text-foreground mb-4">
+                Responsable du traitement
+              </h2>
+              <div className="space-y-3 text-muted-foreground leading-relaxed">
+                <p>Le responsable du traitement des données est :</p>
+                <div className="ml-4 space-y-1">
+                  <p className="font-semibold text-foreground">YL Solutions</p>
+                  <p>1 allée Danton, 91270 Vigneux-sur-Seine</p>
+                  <p>
+                    Email : <a href="mailto:youcef.lebkiri.pro@gmail.com" className="text-primary hover:underline">youcef.lebkiri.pro@gmail.com</a>
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Données collectées */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-[#021633]/10 rounded-2xl p-8 md:p-10 border border-border/30"
             >
               <h2 className="text-xl font-bold text-foreground mb-4">
                 Données collectées
               </h2>
-              <ul className="space-y-2 text-muted-foreground leading-relaxed">
-                <li>• Nom et prénom</li>
-                <li>• Adresse email</li>
-                <li>• Numéro de téléphone</li>
-                <li>• Informations de contact</li>
-                <li>• Données de navigation</li>
-              </ul>
+              <div className="space-y-3 text-muted-foreground leading-relaxed">
+                <p>Les données personnelles pouvant être collectées sur le site sont :</p>
+                <ul className="space-y-2 ml-4">
+                  <li>• Nom</li>
+                  <li>• Prénom</li>
+                  <li>• Adresse mail</li>
+                  <li>• Téléphone</li>
+                  <li>• Autres informations saisies dans le champ "message" du formulaire de contact</li>
+                </ul>
+                <p>
+                  Ces données sont fournies volontairement par l'utilisateur lors de l'envoi d'un message via le formulaire de contact. Le site peut également collecter automatiquement des données de navigation (adresses IP, données de localisation, type de navigateur, etc.) par le biais de cookies, à des fins statistiques et d'amélioration de l'expérience utilisateur.
+                </p>
+              </div>
             </motion.div>
 
-            {/* Card 3 */}
+            {/* Finalités du traitement */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-border/50"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-[#021633]/10 rounded-2xl p-8 md:p-10 border border-border/30"
+            >
+              <h2 className="text-xl font-bold text-foreground mb-4">
+                Finalités du traitement
+              </h2>
+              <div className="space-y-3 text-muted-foreground leading-relaxed">
+                <p>Les données sont collectées pour les finalités suivantes :</p>
+                <ul className="space-y-2 ml-4">
+                  <li>• Répondre aux demandes envoyées via le formulaire de contact</li>
+                  <li>• Assurer la gestion et le bon fonctionnement du site</li>
+                  <li>• Analyser l'audience du site et améliorer les services proposés</li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* Destinataires des données */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-[#021633]/10 rounded-2xl p-8 md:p-10 border border-border/30"
+            >
+              <h2 className="text-xl font-bold text-foreground mb-4">
+                Destinataires des données
+              </h2>
+              <div className="space-y-3 text-muted-foreground leading-relaxed">
+                <p>
+                  Les données collectées sont destinées uniquement à YL Solutions et ne sont jamais cédées, louées ou vendues à des tiers.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Durée de conservation */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-[#021633]/10 rounded-2xl p-8 md:p-10 border border-border/30"
             >
               <h2 className="text-xl font-bold text-foreground mb-4">
                 Durée de conservation
               </h2>
               <div className="space-y-3 text-muted-foreground leading-relaxed">
+                <p>Les données personnelles sont conservées :</p>
+                <ul className="space-y-2 ml-4">
+                  <li>• Pour les demandes de contact : pendant 12 mois à compter du dernier échange</li>
+                  <li>• Pour les cookies : jusqu'à 13 mois maximum après dépôt</li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* Droits des utilisateurs */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-[#021633]/10 rounded-2xl p-8 md:p-10 border border-border/30"
+            >
+              <h2 className="text-xl font-bold text-foreground mb-4">
+                Droits des utilisateurs
+              </h2>
+              <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>
-                  Les données personnelles sont conservées jusqu'à 36 mois maximum après leur collecte, sauf obligation légale contraire.
+                  Conformément au RGPD, vous disposez des droits suivants concernant vos données personnelles :
                 </p>
+                <ul className="space-y-2 ml-4">
+                  <li>• Droit d'accès</li>
+                  <li>• Droit de rectification</li>
+                  <li>• Droit à l'effacement</li>
+                  <li>• Droit à la limitation du traitement</li>
+                  <li>• Droit d'opposition</li>
+                  <li>• Droit à la portabilité des données</li>
+                </ul>
                 <p>
-                  Vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition concernant vos données personnelles.
+                  Vous pouvez exercer ces droits en envoyant un e-mail à : <a href="mailto:youcef.lebkiri.pro@gmail.com" className="text-primary hover:underline">youcef.lebkiri.pro@gmail.com</a>
                 </p>
               </div>
             </motion.div>

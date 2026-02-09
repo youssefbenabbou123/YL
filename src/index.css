@@ -118,6 +118,7 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    font-family: 'Poppins', sans-serif;
   }
 
   h1,
@@ -127,6 +128,11 @@
   h5,
   h6 {
     @apply font-heading font-semibold text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  p, span, div, a, li, ul, ol, button, input, textarea, label {
+    font-family: 'Poppins', sans-serif;
   }
 }
 

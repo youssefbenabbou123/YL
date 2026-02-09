@@ -483,7 +483,7 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="section-padding bg-[#021633]">
+      <section className="section-padding bg-background">
         <div className="container-yl max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -492,10 +492,10 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-4">
               FAQ
             </h2>
-            <p className="text-primary-foreground/80 text-lg mb-8">
+            <p className="text-muted-foreground text-lg mb-8">
               Retrouvez les réponses aux questions les plus courantes
             </p>
             
@@ -546,95 +546,158 @@ const Contact = () => {
                 Demande de mise en relation pour des travaux
               </h3>
               <Accordion type="single" collapsible className="space-y-4">
-                <AccordionItem value="particulier-1" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Comment effectuer une demande de travaux ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-foreground/90 leading-relaxed pb-6 text-base">
-                    La demande s'effectue directement via notre formulaire en ligne. Après réception, nous vous contactons afin de valider les informations transmises et de qualifier précisément votre besoin.
-                  </AccordionContent>
-                </AccordionItem>
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, margin: "-100px" }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  <AccordionItem value="particulier-1" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
+                      Comment effectuer une demande de travaux ?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-foreground/90 leading-relaxed pb-6 text-base">
+                      La demande s'effectue directement via notre formulaire en ligne. Après réception, nous vous contactons afin de valider les informations transmises et de qualifier précisément votre besoin.
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
 
-                <AccordionItem value="particulier-2" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    La demande est-elle gratuite ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Oui, le dépôt de demande est entièrement gratuit et ne vous engage à rien.
-                  </AccordionContent>
-                </AccordionItem>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                >
+                  <AccordionItem value="particulier-2" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
+                      La demande est-elle gratuite ?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
+                      Oui, le dépôt de demande est entièrement gratuit et ne vous engage à rien.
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
 
-                <AccordionItem value="particulier-3" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Quels types de travaux pouvez-vous traiter ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    YL Solutions intervient sur l'ensemble des travaux tous corps d'état, qu'il s'agisse de rénovation intérieure ou extérieure, de travaux techniques ou d'aménagement.
-                  </AccordionContent>
-                </AccordionItem>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <AccordionItem value="particulier-3" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
+                      Quels types de travaux pouvez-vous traiter ?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
+                      YL Solutions intervient sur l'ensemble des travaux tous corps d'état, qu'il s'agisse de rénovation intérieure ou extérieure, de travaux techniques ou d'aménagement.
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
 
-                <AccordionItem value="particulier-4" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Comment les professionnels sont-ils sélectionnés ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Nous collaborons avec des entreprises partenaires identifiées pour leur spécialité, leur sérieux et leur fiabilité. Selon les situations, les documents administratifs et assurances professionnelles peuvent être vérifiés.
-                  </AccordionContent>
-                </AccordionItem>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <AccordionItem value="particulier-4" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
+                      Comment les professionnels sont-ils sélectionnés ?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
+                      Nous collaborons avec des entreprises partenaires identifiées pour leur spécialité, leur sérieux et leur fiabilité. Selon les situations, les documents administratifs et assurances professionnelles peuvent être vérifiés.
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
 
-                <AccordionItem value="particulier-5" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Sous quel délai suis-je recontacté(e) ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Nous revenons vers vous dans les meilleurs délais après la réception de votre demande afin d'assurer une prise en charge rapide.
-                  </AccordionContent>
-                </AccordionItem>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <AccordionItem value="particulier-5" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
+                      Sous quel délai suis-je recontacté(e) ?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
+                      Nous revenons vers vous dans les meilleurs délais après la réception de votre demande afin d'assurer une prise en charge rapide.
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
 
-                <AccordionItem value="particulier-6" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Suis-je engagé(e) après le dépôt de ma demande ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Non. Le dépôt d'une demande n'entraîne aucun engagement et vous restez entièrement libre d'accepter ou non les propositions qui vous sont faites.
-                  </AccordionContent>
-                </AccordionItem>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                >
+                  <AccordionItem value="particulier-6" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
+                      Suis-je engagé(e) après le dépôt de ma demande ?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
+                      Non. Le dépôt d'une demande n'entraîne aucun engagement et vous restez entièrement libre d'accepter ou non les propositions qui vous sont faites.
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
 
-                <AccordionItem value="particulier-7" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Comment est établi le devis ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Le devis est réalisé directement par le professionnel après analyse de votre projet. Selon la nature des travaux, une visite sur site peut être nécessaire afin d'affiner le chiffrage.
-                  </AccordionContent>
-                </AccordionItem>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                  <AccordionItem value="particulier-7" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
+                      Comment est établi le devis ?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
+                      Le devis est réalisé directement par le professionnel après analyse de votre projet. Selon la nature des travaux, une visite sur site peut être nécessaire afin d'affiner le chiffrage.
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
 
-                <AccordionItem value="particulier-8" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Comment s'effectue le paiement des travaux ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Le règlement s'effectue directement auprès du prestataire, conformément aux modalités définies dans le devis, telles que l'acompte, les situations intermédiaires ou le solde final.
-                  </AccordionContent>
-                </AccordionItem>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                >
+                  <AccordionItem value="particulier-8" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
+                      Comment s'effectue le paiement des travaux ?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
+                      Le règlement s'effectue directement auprès du prestataire, conformément aux modalités définies dans le devis, telles que l'acompte, les situations intermédiaires ou le solde final.
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
 
-                <AccordionItem value="particulier-9" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Que faire en cas de difficulté pendant le chantier ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    En cas de besoin, vous pouvez nous contacter. Nous intervenons alors en tant qu'intermédiaire afin de faciliter les échanges et contribuer à la résolution de la situation.
-                  </AccordionContent>
-                </AccordionItem>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                >
+                  <AccordionItem value="particulier-9" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
+                      Que faire en cas de difficulté pendant le chantier ?
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
+                      En cas de besoin, vous pouvez nous contacter. Nous intervenons alors en tant qu'intermédiaire afin de faciliter les échanges et contribuer à la résolution de la situation.
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
               </Accordion>
             </motion.div>
             )}
@@ -650,85 +713,34 @@ const Contact = () => {
                 Confier des chantiers
               </h3>
               <Accordion type="single" collapsible className="space-y-4">
-                <AccordionItem value="entreprise-1" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Quel est le rôle de YL Solutions ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    YL Solutions intervient comme apporteur d'affaires et facilite la mise en relation entre donneurs d'ordre et entreprises qualifiées afin de sécuriser la recherche de prestataires.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="entreprise-2" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Quels types de chantiers pouvez-vous traiter ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Nous intervenons sur tous types de chantiers et tous corps d'état, sur l'ensemble du territoire national, sous réserve de la disponibilité de notre réseau de partenaires.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="entreprise-3" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Quel est le coût de votre service ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Le service est entièrement gratuit pour les donneurs d'ordre. Notre rémunération provient exclusivement des entreprises partenaires sous forme de commission d'apport d'affaires, sans aucun surcoût.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="entreprise-4" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Pouvez-vous répondre à des demandes urgentes ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Oui, selon la localisation du chantier et la disponibilité des entreprises partenaires.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="entreprise-5" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Qui assure le suivi du chantier ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Le mode de suivi est défini au cas par cas. Selon votre organisation interne, le pilotage peut être assuré directement par vos équipes ou faire l'objet d'un suivi partagé.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="entreprise-6" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Comment fonctionne la facturation ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    La facturation peut être établie soit directement entre le prestataire et le client final, soit selon votre organisation interne. Nous adaptons notre fonctionnement à vos contraintes.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="entreprise-7" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Comment les prestataires sont-ils sélectionnés ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Les entreprises partenaires sont sélectionnées en fonction de leur spécialité, de leur réactivité et de la qualité de leurs interventions. Il s'agit majoritairement de partenaires avec lesquels nous avons déjà collaboré.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="entreprise-8" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Pouvez-vous gérer plusieurs chantiers simultanément ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Oui, notre organisation nous permet d'accompagner des volumes réguliers et de répondre à des besoins multi-chantiers.
-                  </AccordionContent>
-                </AccordionItem>
+                {[
+                  { value: "entreprise-1", title: "Quel est le rôle de YL Solutions ?", content: "YL Solutions intervient comme apporteur d'affaires et facilite la mise en relation entre donneurs d'ordre et entreprises qualifiées afin de sécuriser la recherche de prestataires.", delay: 0 },
+                  { value: "entreprise-2", title: "Quels types de chantiers pouvez-vous traiter ?", content: "Nous intervenons sur tous types de chantiers et tous corps d'état, sur l'ensemble du territoire national, sous réserve de la disponibilité de notre réseau de partenaires.", delay: 0.1 },
+                  { value: "entreprise-3", title: "Quel est le coût de votre service ?", content: "Le service est entièrement gratuit pour les donneurs d'ordre. Notre rémunération provient exclusivement des entreprises partenaires sous forme de commission d'apport d'affaires, sans aucun surcoût.", delay: 0.2 },
+                  { value: "entreprise-4", title: "Pouvez-vous répondre à des demandes urgentes ?", content: "Oui, selon la localisation du chantier et la disponibilité des entreprises partenaires.", delay: 0.3 },
+                  { value: "entreprise-5", title: "Qui assure le suivi du chantier ?", content: "Le mode de suivi est défini au cas par cas. Selon votre organisation interne, le pilotage peut être assuré directement par vos équipes ou faire l'objet d'un suivi partagé.", delay: 0.4 },
+                  { value: "entreprise-6", title: "Comment fonctionne la facturation ?", content: "La facturation peut être établie soit directement entre le prestataire et le client final, soit selon votre organisation interne. Nous adaptons notre fonctionnement à vos contraintes.", delay: 0.5 },
+                  { value: "entreprise-7", title: "Comment les prestataires sont-ils sélectionnés ?", content: "Les entreprises partenaires sont sélectionnées en fonction de leur spécialité, de leur réactivité et de la qualité de leurs interventions. Il s'agit majoritairement de partenaires avec lesquels nous avons déjà collaboré.", delay: 0.6 },
+                  { value: "entreprise-8", title: "Pouvez-vous gérer plusieurs chantiers simultanément ?", content: "Oui, notre organisation nous permet d'accompagner des volumes réguliers et de répondre à des besoins multi-chantiers.", delay: 0.7 },
+                ].map((item) => (
+                  <motion.div
+                    key={item.value}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "0px 0px -150px 0px" }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: item.delay }}
+                  >
+                    <AccordionItem value={item.value} className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                      <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
+                        {item.title}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
+                        {item.content}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </motion.div>
+                ))}
               </Accordion>
             </motion.div>
             )}
@@ -744,75 +756,33 @@ const Contact = () => {
                 Recevoir des opportunités de chantiers
               </h3>
               <Accordion type="single" collapsible className="space-y-4">
-                <AccordionItem value="prestataire-1" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Comment devenir partenaire YL Solutions ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Vous pouvez déposer votre candidature via le formulaire dédié. Chaque profil est étudié selon l'activité exercée, la zone d'intervention et les capacités opérationnelles.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="prestataire-2" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    L'inscription est-elle payante ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Non, l'inscription est gratuite et sans engagement.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="prestataire-3" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Quels types de chantiers puis-je recevoir ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Les opportunités proposées sont exclusivement ciblées en fonction de votre spécialité, de votre secteur géographique et de vos disponibilités.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="prestataire-4" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Comment suis-je sélectionné(e) pour un chantier ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    La sélection s'effectue selon l'adéquation entre votre activité, la nature du chantier, la localisation et les contraintes opérationnelles du projet.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="prestataire-5" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Suis-je libre d'accepter ou de refuser une opportunité ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Chaque proposition de chantier est transmise à titre indicatif et vous restez libre de l'accepter ou de la refuser sans aucune obligation.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="prestataire-6" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    YL Solutions intervient-elle dans la réalisation des travaux ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    Nous n'intervenons à aucun moment dans l'exécution des travaux. La relation contractuelle, la réalisation du chantier et la facturation relèvent exclusivement de l'entreprise partenaire.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="prestataire-7" className="border-2 border-border/60 rounded-xl px-6 bg-gradient-to-br from-background to-background/50 shadow-md hover:shadow-lg hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                  <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                    Comment fonctionne la rémunération de YL Solutions ?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                    YL Solutions intervient en tant qu'apporteur d'affaires et est rémunérée par une commission convenue avec l'entreprise partenaire, uniquement en cas de mise en relation aboutie.
-                  </AccordionContent>
-                </AccordionItem>
+                {[
+                  { value: "prestataire-1", title: "Comment devenir partenaire YL Solutions ?", content: "Vous pouvez déposer votre candidature via le formulaire dédié. Chaque profil est étudié selon l'activité exercée, la zone d'intervention et les capacités opérationnelles.", delay: 0 },
+                  { value: "prestataire-2", title: "L'inscription est-elle payante ?", content: "Non, l'inscription est gratuite et sans engagement.", delay: 0.1 },
+                  { value: "prestataire-3", title: "Quels types de chantiers puis-je recevoir ?", content: "Les opportunités proposées sont exclusivement ciblées en fonction de votre spécialité, de votre secteur géographique et de vos disponibilités.", delay: 0.2 },
+                  { value: "prestataire-4", title: "Comment suis-je sélectionné(e) pour un chantier ?", content: "La sélection s'effectue selon l'adéquation entre votre activité, la nature du chantier, la localisation et les contraintes opérationnelles du projet.", delay: 0.3 },
+                  { value: "prestataire-5", title: "Suis-je libre d'accepter ou de refuser une opportunité ?", content: "Chaque proposition de chantier est transmise à titre indicatif et vous restez libre de l'accepter ou de la refuser sans aucune obligation.", delay: 0.4 },
+                  { value: "prestataire-6", title: "YL Solutions intervient-elle dans la réalisation des travaux ?", content: "Nous n'intervenons à aucun moment dans l'exécution des travaux. La relation contractuelle, la réalisation du chantier et la facturation relèvent exclusivement de l'entreprise partenaire.", delay: 0.5 },
+                  { value: "prestataire-7", title: "Comment fonctionne la rémunération de YL Solutions ?", content: "YL Solutions intervient en tant qu'apporteur d'affaires et est rémunérée par une commission convenue avec l'entreprise partenaire, uniquement en cas de mise en relation aboutie.", delay: 0.6 },
+                ].map((item) => (
+                  <motion.div
+                    key={item.value}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "0px 0px -150px 0px" }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: item.delay }}
+                  >
+                    <AccordionItem value={item.value} className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                      <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
+                        {item.title}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
+                        {item.content}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </motion.div>
+                ))}
               </Accordion>
             </motion.div>
             )}
