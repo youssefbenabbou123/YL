@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
+import { Linkedin } from "lucide-react";
 import heroImage from "@/assets/apropos.png";
 import founderImage from "@/assets/YOUCEF LEBKIRI.jpeg";
 
@@ -7,22 +8,18 @@ const values = [
   {
     title: "Sélection rigoureuse",
     description: "Nous collaborons uniquement avec des professionnels identifiés, qualifiés et assurés.",
-    gradient: "from-blue-500 via-cyan-500 to-teal-500"
   },
   {
     title: "Clarté",
     description: "Des échanges simples, des informations transparentes et une vision claire à chaque étape du projet.",
-    gradient: "from-purple-500 via-pink-500 to-rose-500"
   },
   {
     title: "Fiabilité du réseau",
     description: "Un réseau construit dans la durée, fondé sur la qualité des interventions et le sérieux des partenaires.",
-    gradient: "from-orange-500 via-amber-500 to-yellow-500"
   },
   {
     title: "Accompagnement",
     description: "Un suivi structuré pour orienter chaque projet vers les interlocuteurs les plus adaptés.",
-    gradient: "from-green-500 via-emerald-500 to-lime-500"
   },
 ];
 
@@ -61,7 +58,7 @@ const APropos = () => {
 
       {/* Le mot du fondateur */}
       <section className="section-padding bg-background">
-        <div className="container-yl max-w-5xl">
+        <div className="container-yl max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -69,12 +66,12 @@ const APropos = () => {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative p-8 md:p-12 lg:p-16 bg-white rounded-3xl shadow-2xl shadow-black/20 overflow-hidden">
+            <div className="relative p-8 md:p-10 lg:p-12 bg-white rounded-3xl shadow-2xl shadow-black/20">
               {/* Guillemets décoratifs */}
-              <div className="absolute top-4 left-4 text-7xl md:text-9xl text-muted-foreground/30 font-serif leading-none select-none">
+              <div className="absolute top-4 left-4 text-7xl md:text-8xl text-muted-foreground/30 font-serif leading-none select-none">
                 &ldquo;
               </div>
-              <div className="absolute bottom-4 right-4 text-7xl md:text-9xl text-muted-foreground/30 font-serif leading-none select-none">
+              <div className="absolute right-4 text-7xl md:text-8xl text-muted-foreground/30 font-serif leading-none select-none" style={{ bottom: '-1.5rem' }}>
                 &rdquo;
               </div>
               
@@ -85,7 +82,7 @@ const APropos = () => {
                 </h2>
 
                 {/* Texte centré */}
-                <div className="space-y-6 mb-10 text-muted-foreground text-lg leading-relaxed max-w-4xl mx-auto">
+                <div className="space-y-6 mb-10 text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto">
                   <p>
                     L'entreprise est née d'une volonté simple : structurer les échanges entre clients et intervenants afin de faciliter la réalisation des travaux.
                   </p>
@@ -108,8 +105,8 @@ const APropos = () => {
                 </div>
 
                 {/* Photo du fondateur */}
-                <div className="flex flex-col items-center mb-6">
-                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg mb-4">
+                <div className="flex flex-col items-center mb-0">
+                  <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg mb-4">
                     <img
                       src={founderImage}
                       alt="Youcef LEBKIRI"
@@ -118,12 +115,23 @@ const APropos = () => {
                   </div>
                   
                   {/* Nom et titre */}
-                  <p className="text-foreground font-bold text-xl md:text-2xl mb-1">
-                    Youcef LEBKIRI
-                  </p>
-                  <p className="text-primary text-base md:text-lg">
-                    Fondateur de YL Solutions
-                  </p>
+                  <div className="flex flex-col items-center gap-2">
+                    <p className="text-foreground font-bold text-xl md:text-2xl mb-1">
+                      Youcef LEBKIRI
+                    </p>
+                    <p className="text-primary text-base md:text-lg mb-3">
+                      Fondateur de YL Solutions
+                    </p>
+                    <a
+                      href="https://www.linkedin.com/in/youcef-lebkiri"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-[#0077b5] hover:bg-[#005885] text-white rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow-lg"
+                    >
+                      <Linkedin className="w-4 h-4" />
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -161,7 +169,7 @@ const APropos = () => {
                 <div className="relative h-full bg-white rounded-2xl p-1 overflow-hidden transition-all duration-500 hover:-translate-y-2 shadow-sm hover:shadow-xl">
                   
                   {/* Animated Gradient Border Layer */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${value.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`} />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
                   
                   {/* Inner Content Container */}
                   <div className="relative h-full bg-white rounded-xl p-8 md:p-10 flex flex-col justify-center border border-border/50 group-hover:border-transparent transition-colors duration-300">
@@ -180,7 +188,7 @@ const APropos = () => {
                     </p>
 
                     {/* Corner Glow */}
-                    <div className={`absolute -bottom-10 -right-10 w-32 h-32 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-500`} />
+                    <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-500" />
                   </div>
                 </div>
               </motion.div>

@@ -1,8 +1,14 @@
 import { motion } from "framer-motion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const services = [
   {
-    emoji: "🏗️",
     title: "Gros œuvre (structure)",
     items: [
       "VRD (voirie et réseaux divers)",
@@ -14,7 +20,6 @@ const services = [
     ],
   },
   {
-    emoji: "🛠️",
     title: "Second œuvre (aménagement intérieur)",
     items: [
       "Cloisons / doublages / plafonds",
@@ -25,7 +30,6 @@ const services = [
     ],
   },
   {
-    emoji: "⚙️",
     title: "Lots techniques (MEP)",
     items: [
       "Électricité",
@@ -36,7 +40,6 @@ const services = [
     ],
   },
   {
-    emoji: "🎨",
     title: "Finitions & équipements",
     items: [
       "Cuisine (pose + raccordements)",
@@ -48,7 +51,6 @@ const services = [
     ],
   },
   {
-    emoji: "🌳",
     title: "Extérieurs",
     items: [
       "Aménagement paysager",
@@ -60,7 +62,6 @@ const services = [
     ],
   },
   {
-    emoji: "⚠️",
     title: "Spécifiques / sécurité / réglementaire",
     items: [
       "Désamiantage",
@@ -87,8 +88,6 @@ const Services = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-
-
           <h2 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-6 tracking-tight">
             Tous les corps de métier, un seul point d'entrée
           </h2>
@@ -97,36 +96,49 @@ const Services = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-background/10 backdrop-blur-sm rounded-3xl p-8 transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden text-center"
-            >
-              <div className="relative z-10 flex flex-col items-center">
-                <div className="w-16 h-16 rounded-2xl bg-primary-foreground/10 flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-4xl">{service.emoji}</span>
-                </div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="px-4 md:px-16"
+        >
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {services.map((service, index) => (
+                <CarouselItem key={service.title} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="h-full">
+                    <div className="group h-full relative bg-background/10 backdrop-blur-sm rounded-3xl p-8 transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden text-center border border-primary-foreground/10 flex flex-col">
+                      <div className="relative z-10 flex flex-col items-center flex-grow">
+                        <div className="mb-6 w-full">
+                          <h3 className="text-lg md:text-xl font-extrabold text-white mb-2 pb-3 border-b-2 border-primary-foreground/20 inline-block px-4">
+                            {service.title}
+                          </h3>
+                        </div>
 
-                <h3 className="text-xl font-bold text-primary-foreground mb-4">
-                  {service.title}
-                </h3>
-
-                <ul className="space-y-2 text-primary-foreground w-full">
-                  {service.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-center justify-center leading-relaxed">
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                        <ul className="space-y-3 text-primary-foreground/90 w-full text-base font-medium leading-relaxed flex-grow">
+                          {service.items.map((item, itemIndex) => (
+                            <li key={itemIndex} className="flex items-center justify-center">
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20 text-white h-12 w-12 -left-12 lg:-left-16" />
+            <CarouselNext className="hidden md:flex bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20 text-white h-12 w-12 -right-12 lg:-right-16" />
+          </Carousel>
+        </motion.div>
       </div>
     </section>
   );

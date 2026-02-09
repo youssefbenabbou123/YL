@@ -52,7 +52,7 @@ const CTA = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row justify-center items-center gap-4"
+            className="flex justify-center items-center"
           >
             <Link to="/contact">
               <Button 
@@ -62,15 +62,6 @@ const CTA = () => {
               >
                 Demander un devis gratuit
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-            <Link to="/particuliers">
-              <Button 
-                variant="outline" 
-                size="xl" 
-                className="w-full sm:w-auto h-14 px-8 text-base font-semibold transition-all duration-300 rounded-full"
-              >
-                En savoir plus
               </Button>
             </Link>
           </motion.div>

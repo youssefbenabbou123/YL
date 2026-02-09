@@ -53,9 +53,9 @@ const PolitiqueCookies = () => {
                 <p>
                   Le site utilise des cookies pour :
                 </p>
-                <ul className="space-y-2 ml-4">
-                  <li>• Mesurer l'audience</li>
-                  <li>• Améliorer l'expérience utilisateur</li>
+                <ul className="space-y-2 list-disc list-inside">
+                  <li>Mesurer l'audience</li>
+                  <li>Améliorer l'expérience utilisateur</li>
                 </ul>
                 <p>
                   Lors de votre première visite, un bandeau de gestion du consentement vous permet d'accepter ou de refuser tout ou partie des cookies. Vous pouvez également gérer les cookies via les paramètres de votre navigateur.

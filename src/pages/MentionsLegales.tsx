@@ -51,7 +51,7 @@ const MentionsLegales = () => {
               </h2>
               <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>Le présent site est édité par :</p>
-                <div className="ml-4 space-y-1">
+                <div className="space-y-2">
                   <p className="font-semibold text-foreground">YL Solutions</p>
                   <p>Adresse : 1 allée Danton, 91270 Vigneux-sur-Seine</p>
                   <p>
@@ -75,7 +75,7 @@ const MentionsLegales = () => {
               </h2>
               <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>Le site est hébergé par :</p>
-                <div className="ml-4 space-y-1">
+                <div className="space-y-2">
                   <p className="font-semibold text-foreground">IONOS SARL</p>
                   <p>Adresse : 7 place de la Gare, 57200 Sarreguemines, France</p>
                   <p>
@@ -122,7 +122,7 @@ const MentionsLegales = () => {
                   Des données personnelles peuvent être collectées via le formulaire de contact et par l'utilisation de cookies.
                 </p>
                 <p>Le responsable du traitement est :</p>
-                <div className="ml-4 space-y-1">
+                <div className="space-y-2">
                   <p>Youcef LEBKIRI — <a href="mailto:youcef.lebkiri.pro@gmail.com" className="text-primary hover:underline">youcef.lebkiri.pro@gmail.com</a></p>
                 </div>
                 <p>
@@ -175,10 +175,10 @@ const MentionsLegales = () => {
               </h2>
               <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>L'éditeur ne saurait être tenu responsable :</p>
-                <ul className="space-y-2 ml-4">
-                  <li>• d'interruptions temporaires du site,</li>
-                  <li>• de dysfonctionnements indépendants de sa volonté,</li>
-                  <li>• de tout dommage indirect lié à l'utilisation du site.</li>
+                <ul className="space-y-2 list-disc list-inside">
+                  <li>d'interruptions temporaires du site,</li>
+                  <li>de dysfonctionnements indépendants de sa volonté,</li>
+                  <li>de tout dommage indirect lié à l'utilisation du site.</li>
                 </ul>
               </div>
             </motion.div>
@@ -258,7 +258,7 @@ const MentionsLegales = () => {
                 <p>
                   Site web conçu et développé par Melissa BONNET – Auto-entrepreneure
                 </p>
-                <div className="ml-4 space-y-1">
+                <div className="space-y-2">
                   <p>SIRET : 934 160 318 00010</p>
                   <p>
                     Site : <a href="https://melissabonnet.fr" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://melissabonnet.fr</a>

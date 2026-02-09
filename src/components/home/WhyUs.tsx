@@ -4,22 +4,18 @@ const benefits = [
   {
     title: "Professionnels sélectionnés",
     description: "Un réseau construit sur la fiabilité et l'expertise. Nous vérifions rigoureusement chaque partenaire.",
-    gradient: "from-blue-500 via-cyan-500 to-teal-500"
   },
   {
     title: "Gain de temps",
     description: "Une recherche simplifiée, sans perte de temps. Nous trouvons pour vous les meilleurs profils.",
-    gradient: "from-purple-500 via-pink-500 to-rose-500"
   },
   {
     title: "Accompagnement dédié",
     description: "Un interlocuteur unique pour un suivi clair. Vous n'êtes jamais seul face à votre projet.",
-    gradient: "from-orange-500 via-amber-500 to-yellow-500"
   },
   {
     title: "Service gratuit",
     description: "Aucune avance de frais, aucun engagement. Notre service d'intermédiation est totalement transparent.",
-    gradient: "from-green-500 via-emerald-500 to-lime-500"
   },
 ];
 
@@ -59,8 +55,8 @@ const WhyUs = () => {
               <div className="relative h-full bg-background/5 backdrop-blur-sm rounded-[2rem] p-1 overflow-hidden transition-transform duration-500 hover:-translate-y-2">
                 
                 {/* Animated Gradient Border Layer */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${benefit.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`} />
-                <div className={`absolute inset-0 bg-gradient-to-r ${benefit.gradient} opacity-0 group-hover:opacity-30 transition-opacity duration-500`} />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
                 
                 {/* Inner Content Container */}
                 <div className="relative h-full bg-background/95 rounded-[1.8rem] p-8 md:p-10 flex flex-col justify-center border border-white/5 group-hover:border-transparent transition-colors duration-300">
@@ -82,7 +78,7 @@ const WhyUs = () => {
                   </p>
 
                   {/* Corner Glow */}
-                  <div className={`absolute -bottom-10 -right-10 w-32 h-32 bg-gradient-to-br ${benefit.gradient} opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-500`} />
+                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-500" />
                 </div>
               </div>
             </motion.div>

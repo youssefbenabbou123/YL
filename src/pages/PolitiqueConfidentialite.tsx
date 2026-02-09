@@ -72,7 +72,7 @@ const PolitiqueConfidentialite = () => {
               </h2>
               <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>Le responsable du traitement des données est :</p>
-                <div className="ml-4 space-y-1">
+                <div className="space-y-2">
                   <p className="font-semibold text-foreground">YL Solutions</p>
                   <p>1 allée Danton, 91270 Vigneux-sur-Seine</p>
                   <p>
@@ -95,12 +95,12 @@ const PolitiqueConfidentialite = () => {
               </h2>
               <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>Les données personnelles pouvant être collectées sur le site sont :</p>
-                <ul className="space-y-2 ml-4">
-                  <li>• Nom</li>
-                  <li>• Prénom</li>
-                  <li>• Adresse mail</li>
-                  <li>• Téléphone</li>
-                  <li>• Autres informations saisies dans le champ "message" du formulaire de contact</li>
+                <ul className="space-y-2 list-disc list-inside">
+                  <li>Nom</li>
+                  <li>Prénom</li>
+                  <li>Adresse mail</li>
+                  <li>Téléphone</li>
+                  <li>Autres informations saisies dans le champ "message" du formulaire de contact</li>
                 </ul>
                 <p>
                   Ces données sont fournies volontairement par l'utilisateur lors de l'envoi d'un message via le formulaire de contact. Le site peut également collecter automatiquement des données de navigation (adresses IP, données de localisation, type de navigateur, etc.) par le biais de cookies, à des fins statistiques et d'amélioration de l'expérience utilisateur.
@@ -121,10 +121,10 @@ const PolitiqueConfidentialite = () => {
               </h2>
               <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>Les données sont collectées pour les finalités suivantes :</p>
-                <ul className="space-y-2 ml-4">
-                  <li>• Répondre aux demandes envoyées via le formulaire de contact</li>
-                  <li>• Assurer la gestion et le bon fonctionnement du site</li>
-                  <li>• Analyser l'audience du site et améliorer les services proposés</li>
+                <ul className="space-y-2 list-disc list-inside">
+                  <li>Répondre aux demandes envoyées via le formulaire de contact</li>
+                  <li>Assurer la gestion et le bon fonctionnement du site</li>
+                  <li>Analyser l'audience du site et améliorer les services proposés</li>
                 </ul>
               </div>
             </motion.div>
@@ -160,9 +160,9 @@ const PolitiqueConfidentialite = () => {
               </h2>
               <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>Les données personnelles sont conservées :</p>
-                <ul className="space-y-2 ml-4">
-                  <li>• Pour les demandes de contact : pendant 12 mois à compter du dernier échange</li>
-                  <li>• Pour les cookies : jusqu'à 13 mois maximum après dépôt</li>
+                <ul className="space-y-2 list-disc list-inside">
+                  <li>Pour les demandes de contact : pendant 12 mois à compter du dernier échange</li>
+                  <li>Pour les cookies : jusqu'à 13 mois maximum après dépôt</li>
                 </ul>
               </div>
             </motion.div>
@@ -182,13 +182,13 @@ const PolitiqueConfidentialite = () => {
                 <p>
                   Conformément au RGPD, vous disposez des droits suivants concernant vos données personnelles :
                 </p>
-                <ul className="space-y-2 ml-4">
-                  <li>• Droit d'accès</li>
-                  <li>• Droit de rectification</li>
-                  <li>• Droit à l'effacement</li>
-                  <li>• Droit à la limitation du traitement</li>
-                  <li>• Droit d'opposition</li>
-                  <li>• Droit à la portabilité des données</li>
+                <ul className="space-y-2 list-disc list-inside">
+                  <li>Droit d'accès</li>
+                  <li>Droit de rectification</li>
+                  <li>Droit à l'effacement</li>
+                  <li>Droit à la limitation du traitement</li>
+                  <li>Droit d'opposition</li>
+                  <li>Droit à la portabilité des données</li>
                 </ul>
                 <p>
                   Vous pouvez exercer ces droits en envoyant un e-mail à : <a href="mailto:youcef.lebkiri.pro@gmail.com" className="text-primary hover:underline">youcef.lebkiri.pro@gmail.com</a>

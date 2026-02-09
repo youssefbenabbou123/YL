@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Users, Building2, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-construction.jpg";
 
@@ -71,7 +71,6 @@ const Hero = () => {
                         >
                             <Link to="/particuliers">
                                 <Button className="w-full sm:w-auto h-14 px-8 text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1 transition-all duration-300 bg-primary text-white rounded-full">
-                                    <Users className="w-5 h-5 mr-2" />
                                     Je suis un particulier
                                 </Button>
                             </Link>
@@ -80,7 +79,6 @@ const Hero = () => {
                                     variant="outline" 
                                     className="w-full sm:w-auto h-14 px-8 text-base border-2 bg-white/90 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none hover:bg-white lg:hover:bg-secondary/50 rounded-full group hover:-translate-y-1 transition-all duration-300 text-foreground lg:text-black border-foreground/20 lg:border-border"
                                 >
-                                    <Building2 className="w-5 h-5 mr-2" />
                                     Je suis un professionnel
                                 </Button>
                             </Link>

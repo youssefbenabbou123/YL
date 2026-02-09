@@ -57,13 +57,13 @@ const HowItWorks = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white rounded-3xl p-8 border border-border/60 shadow-sm hover:shadow-lg transition-all duration-300 hover:border-primary/30"
             >
-              <div className="flex items-start gap-4 mb-6">
+              <div className="flex items-center gap-4 mb-6">
                 <div className="flex-shrink-0">
                   <div className="text-5xl font-bold text-primary/20 leading-none">
                     {step.number}
                   </div>
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 pt-2">
                   <h3 className="text-2xl font-bold text-foreground mb-3">
                     {step.title}
                   </h3>

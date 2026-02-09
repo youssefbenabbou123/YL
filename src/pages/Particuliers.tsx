@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
-  CheckCircle, 
   ArrowRight, 
   Home, 
   Building, 
@@ -168,40 +167,6 @@ const Particuliers = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Important Note */}
-      <section className="section-padding bg-background">
-        <div className="container-yl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="card-elevated p-8 md:p-12"
-          >
-            <div className="flex flex-col md:flex-row gap-6 items-start">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <CheckCircle className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-foreground mb-3 mt-8 md:mt-12">
-                  Important à savoir
-                </h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  <strong className="text-foreground">YL Solutions est un apporteur d'affaires</strong>, 
-                  pas une entreprise de travaux. Nous ne réalisons pas les travaux nous-mêmes : 
-                  notre rôle est de vous mettre en relation avec des professionnels qualifiés 
-                  qui correspondent à vos besoins.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  Cette approche vous garantit de trouver l'artisan le plus adapté à votre projet, 
-                  sans avoir à chercher par vous-même parmi des centaines de prestataires.
-                </p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
