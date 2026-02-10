@@ -79,7 +79,7 @@ const HowItWorks = () => {
               custom={index}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.5, margin: "0px 0px -100px 0px" }}
+              viewport={{ once: true, amount: 0.8 }}
               variants={cardVariants}
               className="bg-white rounded-3xl p-8 border border-border/60 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-primary/30 md:hover:-translate-y-1 will-change-[transform,box-shadow]"
             >
