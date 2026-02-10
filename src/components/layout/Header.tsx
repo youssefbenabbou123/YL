@@ -318,7 +318,7 @@ const Header = () => {
                         <Input
                           ref={searchInputRef}
                           type="text"
-                          placeholder="Que recherchez-vous ?"
+                          placeholder=""
                           value={searchQuery}
                           onChange={handleSearchChange}
                           onKeyDown={handleKeyDown}
@@ -386,11 +386,6 @@ const Header = () => {
                           Aucun résultat trouvé pour "{searchQuery}"
                         </div>
                       )}
-                      {!searchQuery && (
-                        <div className="px-4 py-6 text-center text-sm text-muted-foreground">
-                          Tapez pour rechercher des pages ou services...
-                        </div>
-                      )}
                     </div>
                   </motion.div>
                 )}
@@ -440,7 +435,7 @@ const Header = () => {
                         <Input
                           ref={searchInputRef}
                           type="text"
-                          placeholder="Rechercher..."
+                          placeholder=""
                           value={searchQuery}
                           onChange={handleSearchChange}
                           onKeyDown={handleKeyDown}

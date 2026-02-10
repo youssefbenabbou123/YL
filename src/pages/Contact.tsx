@@ -36,6 +36,22 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
+const heroContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+  },
+};
+
+const heroItem = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
+};
+
 const Contact = () => {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
@@ -55,7 +71,6 @@ const Contact = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error when user types
     if (errors[name as keyof ContactFormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -69,8 +84,7 @@ const Contact = () => {
     const files = e.target.files;
     if (files) {
       const newFiles = Array.from(files).filter(file => {
-        // Vérifier que la taille est raisonnable (max 10MB par fichier)
-        const isSizeValid = file.size <= 10 * 1024 * 1024; // 10MB
+        const isSizeValid = file.size <= 10 * 1024 * 1024;
         return isSizeValid;
       });
       
@@ -78,10 +92,9 @@ const Contact = () => {
         toast.error("Les fichiers doivent faire moins de 10MB chacun");
       }
       
-      const updatedFiles = [...attachments, ...newFiles].slice(0, 5); // Max 5 fichiers
+      const updatedFiles = [...attachments, ...newFiles].slice(0, 5);
       setAttachments(updatedFiles);
       
-      // Créer les URLs de prévisualisation uniquement pour les images
       const newUrls = newFiles.map(file => {
         if (file.type.startsWith('image/')) {
           return URL.createObjectURL(file);
@@ -93,7 +106,6 @@ const Contact = () => {
   };
 
   const removeAttachment = (index: number) => {
-    // Révoquer l'URL de prévisualisation si elle existe (pour les images)
     if (previewUrls[index]) {
       URL.revokeObjectURL(previewUrls[index]);
     }
@@ -101,7 +113,6 @@ const Contact = () => {
     setPreviewUrls((prev) => prev.filter((_, i) => i !== index));
   };
 
-  // Nettoyer les URLs lors du démontage
   useEffect(() => {
     return () => {
       previewUrls.forEach((url) => {
@@ -118,7 +129,6 @@ const Contact = () => {
     try {
       contactSchema.parse(formData);
       
-      // Send email via Resend
       const result = await sendContactEmail({
         name: formData.name,
         email: formData.email,
@@ -168,7 +178,10 @@ const Contact = () => {
       <section className="relative min-h-[40vh] flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img
+          <motion.img
+            initial={{ scale: 1.15 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94] }}
             src={heroImage}
             alt="Contact YL Solutions"
             className="w-full h-full object-cover object-[center_30%]"
@@ -179,17 +192,23 @@ const Contact = () => {
         {/* Content */}
         <div className="container-yl relative z-10 py-16 md:py-24">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            variants={heroContainer}
+            initial="hidden"
+            animate="visible"
             className="text-center max-w-2xl mx-auto"
           >
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4 mt-8 md:mt-12">
+            <motion.h1
+              variants={heroItem}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4 mt-8 md:mt-12"
+            >
               Contactez-nous
-            </h1>
-            <p className="text-lg text-primary-foreground/80">
+            </motion.h1>
+            <motion.p
+              variants={heroItem}
+              className="text-lg text-primary-foreground/80"
+            >
               Pour toute demande d'information ou de mise en relation, notre équipe reste à votre écoute et vous répond dans les meilleurs délais.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -200,9 +219,10 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Contact Info */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="lg:col-span-1"
             >
               <div className="sticky top-24">
@@ -213,47 +233,55 @@ const Contact = () => {
                   </h2>
                   
                   <div className="space-y-6">
-                    <a 
-                      href="mailto:youcef.lebkiri.pro@gmail.com" 
-                      className="flex items-start gap-4 group p-4 rounded-xl bg-gradient-to-br from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 hover:shadow-md hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-0.5"
-                    >
-                      <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-300 shadow-sm">
-                        <Mail className="w-6 h-6 text-primary" />
-                      </div>
-                      <div className="flex-1 pt-1.5 min-w-0">
-                        <p className="font-semibold text-foreground mb-2 text-xs uppercase tracking-wider text-primary/70">Email</p>
-                        <p className="text-foreground text-sm leading-relaxed font-medium group-hover:text-primary transition-colors break-words" style={{ fontSize: '0.823rem' }}>
-                          youcef.lebkiri.pro@gmail.com
-                        </p>
-                      </div>
-                    </a>
-
-                    <a 
-                      href="tel:+33627104458" 
-                      className="flex items-start gap-4 group p-4 rounded-xl bg-gradient-to-br from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 hover:shadow-md hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-0.5"
-                    >
-                      <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-300 shadow-sm">
-                        <Phone className="w-6 h-6 text-primary" />
-                      </div>
-                      <div className="flex-1 pt-1.5 min-w-0">
-                        <p className="font-semibold text-foreground mb-2 text-xs uppercase tracking-wider text-primary/70">Téléphone</p>
-                        <p className="text-foreground text-sm leading-relaxed font-medium group-hover:text-primary transition-colors break-words">
-                          06 27 10 44 58
-                        </p>
-                      </div>
-                    </a>
-                    <div className="flex items-start gap-4 group p-4 rounded-xl bg-gradient-to-br from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 hover:shadow-md hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-0.5">
-                      <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-300 shadow-sm">
-                        <Clock className="w-6 h-6 text-primary" />
-                      </div>
-                      <div className="flex-1 pt-1.5 min-w-0">
-                        <p className="font-semibold text-foreground mb-2 text-xs uppercase tracking-wider text-primary/70">Horaires</p>
-                        <p className="text-foreground text-sm leading-relaxed font-medium group-hover:text-primary transition-colors break-words">
-                          Du lundi au vendredi<br />
-                          9h00 - 18h00
-                        </p>
-                      </div>
-                    </div>
+                    {[
+                      {
+                        href: "mailto:youcef.lebkiri.pro@gmail.com",
+                        icon: Mail,
+                        label: "Email",
+                        content: "youcef.lebkiri.pro@gmail.com",
+                        isLink: true,
+                        smallText: true,
+                      },
+                      {
+                        href: "tel:+33627104458",
+                        icon: Phone,
+                        label: "Téléphone",
+                        content: "06 27 10 44 58",
+                        isLink: true,
+                      },
+                      {
+                        icon: Clock,
+                        label: "Horaires",
+                        content: "Du lundi au vendredi\n9h00 - 18h00",
+                        isLink: false,
+                      },
+                    ].map((item, i) => {
+                      const Icon = item.icon;
+                      const Wrapper = item.isLink ? motion.a : motion.div;
+                      return (
+                        <Wrapper
+                          key={item.label}
+                          {...(item.isLink ? { href: item.href } : {})}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                          className="flex items-start gap-4 group p-4 rounded-xl bg-gradient-to-br from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 hover:shadow-md hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-0.5"
+                        >
+                          <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-300 shadow-sm">
+                            <Icon className="w-6 h-6 text-primary" />
+                          </div>
+                          <div className="flex-1 pt-1.5 min-w-0">
+                            <p className="font-semibold text-foreground mb-2 text-xs uppercase tracking-wider text-primary/70">{item.label}</p>
+                            <p
+                              className={`text-foreground text-sm leading-relaxed font-medium group-hover:text-primary transition-colors break-words whitespace-pre-line ${item.smallText ? 'text-[0.823rem]' : ''}`}
+                            >
+                              {item.content}
+                            </p>
+                          </div>
+                        </Wrapper>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -261,9 +289,10 @@ const Contact = () => {
 
             {/* Contact Form */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="lg:col-span-2"
             >
               <div className="relative p-8 md:p-10 border border-border/60 rounded-2xl shadow-xl shadow-black/5 backdrop-blur-sm bg-background overflow-hidden">
@@ -486,10 +515,10 @@ const Contact = () => {
       <section className="section-padding bg-background">
         <div className="container-yl max-w-5xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-4">
@@ -546,158 +575,35 @@ const Contact = () => {
                 Demande de mise en relation pour des travaux
               </h3>
               <Accordion type="single" collapsible className="space-y-4">
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, margin: "-100px" }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  <AccordionItem value="particulier-1" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
-                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                      Comment effectuer une demande de travaux ?
-                    </AccordionTrigger>
-                    <AccordionContent className="text-foreground/90 leading-relaxed pb-6 text-base">
-                      La demande s'effectue directement via notre formulaire en ligne. Après réception, nous vous contactons afin de valider les informations transmises et de qualifier précisément votre besoin.
-                    </AccordionContent>
-                  </AccordionItem>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                >
-                  <AccordionItem value="particulier-2" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
-                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                      La demande est-elle gratuite ?
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                      Oui, le dépôt de demande est entièrement gratuit et ne vous engage à rien.
-                    </AccordionContent>
-                  </AccordionItem>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  <AccordionItem value="particulier-3" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
-                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                      Quels types de travaux pouvez-vous traiter ?
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                      YL Solutions intervient sur l'ensemble des travaux tous corps d'état, qu'il s'agisse de rénovation intérieure ou extérieure, de travaux techniques ou d'aménagement.
-                    </AccordionContent>
-                  </AccordionItem>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                >
-                  <AccordionItem value="particulier-4" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
-                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                      Comment les professionnels sont-ils sélectionnés ?
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                      Nous collaborons avec des entreprises partenaires identifiées pour leur spécialité, leur sérieux et leur fiabilité. Selon les situations, les documents administratifs et assurances professionnelles peuvent être vérifiés.
-                    </AccordionContent>
-                  </AccordionItem>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                >
-                  <AccordionItem value="particulier-5" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
-                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                      Sous quel délai suis-je recontacté(e) ?
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                      Nous revenons vers vous dans les meilleurs délais après la réception de votre demande afin d'assurer une prise en charge rapide.
-                    </AccordionContent>
-                  </AccordionItem>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                >
-                  <AccordionItem value="particulier-6" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
-                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                      Suis-je engagé(e) après le dépôt de ma demande ?
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                      Non. Le dépôt d'une demande n'entraîne aucun engagement et vous restez entièrement libre d'accepter ou non les propositions qui vous sont faites.
-                    </AccordionContent>
-                  </AccordionItem>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                >
-                  <AccordionItem value="particulier-7" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
-                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                      Comment est établi le devis ?
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                      Le devis est réalisé directement par le professionnel après analyse de votre projet. Selon la nature des travaux, une visite sur site peut être nécessaire afin d'affiner le chiffrage.
-                    </AccordionContent>
-                  </AccordionItem>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.7 }}
-                >
-                  <AccordionItem value="particulier-8" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
-                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                      Comment s'effectue le paiement des travaux ?
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                      Le règlement s'effectue directement auprès du prestataire, conformément aux modalités définies dans le devis, telles que l'acompte, les situations intermédiaires ou le solde final.
-                    </AccordionContent>
-                  </AccordionItem>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.8 }}
-                >
-                  <AccordionItem value="particulier-9" className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
-                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-                    <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
-                      Que faire en cas de difficulté pendant le chantier ?
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
-                      En cas de besoin, vous pouvez nous contacter. Nous intervenons alors en tant qu'intermédiaire afin de faciliter les échanges et contribuer à la résolution de la situation.
-                    </AccordionContent>
-                  </AccordionItem>
-                </motion.div>
+                {[
+                  { value: "particulier-1", title: "Comment effectuer une demande de travaux ?", content: "La demande s'effectue directement via notre formulaire en ligne. Après réception, nous vous contactons afin de valider les informations transmises et de qualifier précisément votre besoin." },
+                  { value: "particulier-2", title: "La demande est-elle gratuite ?", content: "Oui, le dépôt de demande est entièrement gratuit et ne vous engage à rien." },
+                  { value: "particulier-3", title: "Quels types de travaux pouvez-vous traiter ?", content: "YL Solutions intervient sur l'ensemble des travaux tous corps d'état, qu'il s'agisse de rénovation intérieure ou extérieure, de travaux techniques ou d'aménagement." },
+                  { value: "particulier-4", title: "Comment les professionnels sont-ils sélectionnés ?", content: "Nous collaborons avec des entreprises partenaires identifiées pour leur spécialité, leur sérieux et leur fiabilité. Selon les situations, les documents administratifs et assurances professionnelles peuvent être vérifiés." },
+                  { value: "particulier-5", title: "Sous quel délai suis-je recontacté(e) ?", content: "Nous revenons vers vous dans les meilleurs délais après la réception de votre demande afin d'assurer une prise en charge rapide." },
+                  { value: "particulier-6", title: "Suis-je engagé(e) après le dépôt de ma demande ?", content: "Non. Le dépôt d'une demande n'entraîne aucun engagement et vous restez entièrement libre d'accepter ou non les propositions qui vous sont faites." },
+                  { value: "particulier-7", title: "Comment est établi le devis ?", content: "Le devis est réalisé directement par le professionnel après analyse de votre projet. Selon la nature des travaux, une visite sur site peut être nécessaire afin d'affiner le chiffrage." },
+                  { value: "particulier-8", title: "Comment s'effectue le paiement des travaux ?", content: "Le règlement s'effectue directement auprès du prestataire, conformément aux modalités définies dans le devis, telles que l'acompte, les situations intermédiaires ou le solde final." },
+                  { value: "particulier-9", title: "Que faire en cas de difficulté pendant le chantier ?", content: "En cas de besoin, vous pouvez nous contacter. Nous intervenons alors en tant qu'intermédiaire afin de faciliter les échanges et contribuer à la résolution de la situation." },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.value}
+                    initial={{ opacity: 0, y: 25 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.5, delay: i * 0.06 }}
+                  >
+                    <AccordionItem value={item.value} className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                      <AccordionTrigger className="text-left font-semibold text-lg py-6 hover:no-underline [&[data-state=open]]:text-primary transition-colors">
+                        {item.title}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-base">
+                        {item.content}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </motion.div>
+                ))}
               </Accordion>
             </motion.div>
             )}
@@ -714,21 +620,21 @@ const Contact = () => {
               </h3>
               <Accordion type="single" collapsible className="space-y-4">
                 {[
-                  { value: "entreprise-1", title: "Quel est le rôle de YL Solutions ?", content: "YL Solutions intervient comme apporteur d'affaires et facilite la mise en relation entre donneurs d'ordre et entreprises qualifiées afin de sécuriser la recherche de prestataires.", delay: 0 },
-                  { value: "entreprise-2", title: "Quels types de chantiers pouvez-vous traiter ?", content: "Nous intervenons sur tous types de chantiers et tous corps d'état, sur l'ensemble du territoire national, sous réserve de la disponibilité de notre réseau de partenaires.", delay: 0.1 },
-                  { value: "entreprise-3", title: "Quel est le coût de votre service ?", content: "Le service est entièrement gratuit pour les donneurs d'ordre. Notre rémunération provient exclusivement des entreprises partenaires sous forme de commission d'apport d'affaires, sans aucun surcoût.", delay: 0.2 },
-                  { value: "entreprise-4", title: "Pouvez-vous répondre à des demandes urgentes ?", content: "Oui, selon la localisation du chantier et la disponibilité des entreprises partenaires.", delay: 0.3 },
-                  { value: "entreprise-5", title: "Qui assure le suivi du chantier ?", content: "Le mode de suivi est défini au cas par cas. Selon votre organisation interne, le pilotage peut être assuré directement par vos équipes ou faire l'objet d'un suivi partagé.", delay: 0.4 },
-                  { value: "entreprise-6", title: "Comment fonctionne la facturation ?", content: "La facturation peut être établie soit directement entre le prestataire et le client final, soit selon votre organisation interne. Nous adaptons notre fonctionnement à vos contraintes.", delay: 0.5 },
-                  { value: "entreprise-7", title: "Comment les prestataires sont-ils sélectionnés ?", content: "Les entreprises partenaires sont sélectionnées en fonction de leur spécialité, de leur réactivité et de la qualité de leurs interventions. Il s'agit majoritairement de partenaires avec lesquels nous avons déjà collaboré.", delay: 0.6 },
-                  { value: "entreprise-8", title: "Pouvez-vous gérer plusieurs chantiers simultanément ?", content: "Oui, notre organisation nous permet d'accompagner des volumes réguliers et de répondre à des besoins multi-chantiers.", delay: 0.7 },
-                ].map((item) => (
+                  { value: "entreprise-1", title: "Quel est le rôle de YL Solutions ?", content: "YL Solutions intervient comme apporteur d'affaires et facilite la mise en relation entre donneurs d'ordre et entreprises qualifiées afin de sécuriser la recherche de prestataires." },
+                  { value: "entreprise-2", title: "Quels types de chantiers pouvez-vous traiter ?", content: "Nous intervenons sur tous types de chantiers et tous corps d'état, sur l'ensemble du territoire national, sous réserve de la disponibilité de notre réseau de partenaires." },
+                  { value: "entreprise-3", title: "Quel est le coût de votre service ?", content: "Le service est entièrement gratuit pour les donneurs d'ordre. Notre rémunération provient exclusivement des entreprises partenaires sous forme de commission d'apport d'affaires, sans aucun surcoût." },
+                  { value: "entreprise-4", title: "Pouvez-vous répondre à des demandes urgentes ?", content: "Oui, selon la localisation du chantier et la disponibilité des entreprises partenaires." },
+                  { value: "entreprise-5", title: "Qui assure le suivi du chantier ?", content: "Le mode de suivi est défini au cas par cas. Selon votre organisation interne, le pilotage peut être assuré directement par vos équipes ou faire l'objet d'un suivi partagé." },
+                  { value: "entreprise-6", title: "Comment fonctionne la facturation ?", content: "La facturation peut être établie soit directement entre le prestataire et le client final, soit selon votre organisation interne. Nous adaptons notre fonctionnement à vos contraintes." },
+                  { value: "entreprise-7", title: "Comment les prestataires sont-ils sélectionnés ?", content: "Les entreprises partenaires sont sélectionnées en fonction de leur spécialité, de leur réactivité et de la qualité de leurs interventions. Il s'agit majoritairement de partenaires avec lesquels nous avons déjà collaboré." },
+                  { value: "entreprise-8", title: "Pouvez-vous gérer plusieurs chantiers simultanément ?", content: "Oui, notre organisation nous permet d'accompagner des volumes réguliers et de répondre à des besoins multi-chantiers." },
+                ].map((item, i) => (
                   <motion.div
                     key={item.value}
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 25 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "0px 0px -150px 0px" }}
-                    transition={{ duration: 0.6, ease: "easeOut", delay: item.delay }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.5, delay: i * 0.06 }}
                   >
                     <AccordionItem value={item.value} className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
                       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
@@ -757,20 +663,20 @@ const Contact = () => {
               </h3>
               <Accordion type="single" collapsible className="space-y-4">
                 {[
-                  { value: "prestataire-1", title: "Comment devenir partenaire YL Solutions ?", content: "Vous pouvez déposer votre candidature via le formulaire dédié. Chaque profil est étudié selon l'activité exercée, la zone d'intervention et les capacités opérationnelles.", delay: 0 },
-                  { value: "prestataire-2", title: "L'inscription est-elle payante ?", content: "Non, l'inscription est gratuite et sans engagement.", delay: 0.1 },
-                  { value: "prestataire-3", title: "Quels types de chantiers puis-je recevoir ?", content: "Les opportunités proposées sont exclusivement ciblées en fonction de votre spécialité, de votre secteur géographique et de vos disponibilités.", delay: 0.2 },
-                  { value: "prestataire-4", title: "Comment suis-je sélectionné(e) pour un chantier ?", content: "La sélection s'effectue selon l'adéquation entre votre activité, la nature du chantier, la localisation et les contraintes opérationnelles du projet.", delay: 0.3 },
-                  { value: "prestataire-5", title: "Suis-je libre d'accepter ou de refuser une opportunité ?", content: "Chaque proposition de chantier est transmise à titre indicatif et vous restez libre de l'accepter ou de la refuser sans aucune obligation.", delay: 0.4 },
-                  { value: "prestataire-6", title: "YL Solutions intervient-elle dans la réalisation des travaux ?", content: "Nous n'intervenons à aucun moment dans l'exécution des travaux. La relation contractuelle, la réalisation du chantier et la facturation relèvent exclusivement de l'entreprise partenaire.", delay: 0.5 },
-                  { value: "prestataire-7", title: "Comment fonctionne la rémunération de YL Solutions ?", content: "YL Solutions intervient en tant qu'apporteur d'affaires et est rémunérée par une commission convenue avec l'entreprise partenaire, uniquement en cas de mise en relation aboutie.", delay: 0.6 },
-                ].map((item) => (
+                  { value: "prestataire-1", title: "Comment devenir partenaire YL Solutions ?", content: "Vous pouvez déposer votre candidature via le formulaire dédié. Chaque profil est étudié selon l'activité exercée, la zone d'intervention et les capacités opérationnelles." },
+                  { value: "prestataire-2", title: "L'inscription est-elle payante ?", content: "Non, l'inscription est gratuite et sans engagement." },
+                  { value: "prestataire-3", title: "Quels types de chantiers puis-je recevoir ?", content: "Les opportunités proposées sont exclusivement ciblées en fonction de votre spécialité, de votre secteur géographique et de vos disponibilités." },
+                  { value: "prestataire-4", title: "Comment suis-je sélectionné(e) pour un chantier ?", content: "La sélection s'effectue selon l'adéquation entre votre activité, la nature du chantier, la localisation et les contraintes opérationnelles du projet." },
+                  { value: "prestataire-5", title: "Suis-je libre d'accepter ou de refuser une opportunité ?", content: "Chaque proposition de chantier est transmise à titre indicatif et vous restez libre de l'accepter ou de la refuser sans aucune obligation." },
+                  { value: "prestataire-6", title: "YL Solutions intervient-elle dans la réalisation des travaux ?", content: "Nous n'intervenons à aucun moment dans l'exécution des travaux. La relation contractuelle, la réalisation du chantier et la facturation relèvent exclusivement de l'entreprise partenaire." },
+                  { value: "prestataire-7", title: "Comment fonctionne la rémunération de YL Solutions ?", content: "YL Solutions intervient en tant qu'apporteur d'affaires et est rémunérée par une commission convenue avec l'entreprise partenaire, uniquement en cas de mise en relation aboutie." },
+                ].map((item, i) => (
                   <motion.div
                     key={item.value}
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 25 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "0px 0px -150px 0px" }}
-                    transition={{ duration: 0.6, ease: "easeOut", delay: item.delay }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.5, delay: i * 0.06 }}
                   >
                     <AccordionItem value={item.value} className="border border-border/30 rounded-xl px-6 bg-[#021633]/10 overflow-hidden relative">
                       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>

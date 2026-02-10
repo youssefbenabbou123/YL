@@ -28,15 +28,44 @@ const steps = [
   },
 ];
 
+const cardVariants = {
+  hidden: (i: number) => ({
+    opacity: 0,
+    y: 40,
+    x: i % 2 === 0 ? -30 : 30,
+    scale: 0.95,
+  }),
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    x: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      delay: i * 0.15,
+      ease: [0.25, 0.46, 0.45, 0.94],
+    },
+  }),
+};
+
+const titleVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
+};
+
 const HowItWorks = () => {
   return (
     <section className="section-padding bg-background">
       <div className="container-yl max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={titleVariants}
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -51,17 +80,25 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <motion.div
               key={step.number}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-3xl p-8 border border-border/60 shadow-sm hover:shadow-lg transition-all duration-300 hover:border-primary/30"
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={cardVariants}
+              whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              className="bg-white rounded-3xl p-8 border border-border/60 shadow-sm hover:shadow-xl transition-shadow duration-300 hover:border-primary/30"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="flex-shrink-0">
-                  <div className="text-5xl font-bold text-primary/20 leading-none">
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.15 + 0.3, type: "spring", stiffness: 200 }}
+                    className="text-5xl font-bold text-primary/20 leading-none"
+                  >
                     {step.number}
-                  </div>
+                  </motion.div>
                 </div>
                 <div className="flex-1 pt-2">
                   <h3 className="text-2xl font-bold text-foreground mb-3">

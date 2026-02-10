@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["Poppins", "sans-serif"],
-        body: ["Poppins", "sans-serif"],
+        heading: ["Lexend Deca", "Lexend Deca Fallback", "sans-serif"],
+        body: ["Lexend Deca", "Lexend Deca Fallback", "sans-serif"],
+        sans: ["Lexend Deca", "Lexend Deca Fallback", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

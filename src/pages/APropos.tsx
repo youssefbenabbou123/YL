@@ -23,6 +23,42 @@ const values = [
   },
 ];
 
+const heroContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+  },
+};
+
+const heroItem = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
+};
+
+const cardVariants = {
+  hidden: (i: number) => ({
+    opacity: 0,
+    y: 50,
+    x: i % 2 === 0 ? -20 : 20,
+    scale: 0.95,
+  }),
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    x: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      delay: i * 0.12,
+      ease: [0.25, 0.46, 0.45, 0.94],
+    },
+  }),
+};
+
 const APropos = () => {
   return (
     <Layout>
@@ -30,7 +66,10 @@ const APropos = () => {
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img
+          <motion.img
+            initial={{ scale: 1.15 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94] }}
             src={heroImage}
             alt="À propos de YL Solutions"
             className="w-full h-full object-cover object-[center_65%]"
@@ -41,17 +80,23 @@ const APropos = () => {
         {/* Content */}
         <div className="container-yl relative z-10 py-16 md:py-24">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            variants={heroContainer}
+            initial="hidden"
+            animate="visible"
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6 tracking-tight">
+            <motion.h1
+              variants={heroItem}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6 tracking-tight"
+            >
               À propos de <span className="text-primary-foreground">YL Solutions</span>
-            </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed">
+            </motion.h1>
+            <motion.p
+              variants={heroItem}
+              className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed"
+            >
               Découvrez notre histoire, nos valeurs et notre engagement pour vous accompagner dans vos projets de travaux.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -60,10 +105,10 @@ const APropos = () => {
       <section className="section-padding bg-background">
         <div className="container-yl max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 50, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="relative"
           >
             <div className="relative p-8 md:p-10 lg:p-12 bg-white rounded-3xl shadow-2xl shadow-black/20">
@@ -77,12 +122,24 @@ const APropos = () => {
               
               <div className="relative z-10 text-center">
                 {/* Titre centré */}
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-3xl md:text-4xl font-bold text-foreground mb-8"
+                >
                   Le mot du fondateur
-                </h2>
+                </motion.h2>
 
                 {/* Texte centré */}
-                <div className="space-y-6 mb-10 text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.35 }}
+                  className="space-y-6 mb-10 text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto"
+                >
                   <p>
                     L'entreprise est née d'une volonté simple : structurer les échanges entre clients et intervenants afin de faciliter la réalisation des travaux.
                   </p>
@@ -102,10 +159,16 @@ const APropos = () => {
                   <p className="font-medium text-foreground italic">
                     "Notre objectif est simple : faciliter vos démarches, sécuriser votre projet et vous permettre d'avancer avec clarté et sérénité."
                   </p>
-                </div>
+                </motion.div>
 
                 {/* Photo du fondateur */}
-                <div className="flex flex-col items-center mb-0">
+                <motion.div
+                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.5, type: "spring", stiffness: 150 }}
+                  className="flex flex-col items-center mb-0"
+                >
                   <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg mb-4">
                     <img
                       src={founderImage}
@@ -123,7 +186,7 @@ const APropos = () => {
                       Fondateur de YL Solutions
                     </p>
                     <a
-                      href="https://www.linkedin.com/in/youcef-lebkiri"
+                      href="https://www.linkedin.com/in/youcef-lebkiri-apporteur-d'affaires-btp-576b661b9/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-4 py-2 bg-[#0077b5] hover:bg-[#005885] text-white rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow-lg"
@@ -132,7 +195,7 @@ const APropos = () => {
                       LinkedIn
                     </a>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </motion.div>
@@ -141,12 +204,19 @@ const APropos = () => {
 
       {/* Nos valeurs */}
       <section className="section-padding bg-slate-50 relative overflow-hidden">
+        {/* Animated floating orb */}
+        <motion.div
+          animate={{ y: [0, -20, 0], x: [0, 15, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"
+        />
+
         <div className="container-yl relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
@@ -159,14 +229,16 @@ const APropos = () => {
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                custom={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={cardVariants}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="group relative h-full"
               >
                 {/* Card Container */}
-                <div className="relative h-full bg-white rounded-2xl p-1 overflow-hidden transition-all duration-500 hover:-translate-y-2 shadow-sm hover:shadow-xl">
+                <div className="relative h-full bg-white rounded-2xl p-1 overflow-hidden transition-shadow duration-500 shadow-sm hover:shadow-xl">
                   
                   {/* Animated Gradient Border Layer */}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />

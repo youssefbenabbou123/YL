@@ -19,18 +19,59 @@ const benefits = [
   },
 ];
 
+const titleVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
+};
+
+const cardVariants = {
+  hidden: (i: number) => ({
+    opacity: 0,
+    y: 50,
+    scale: 0.9,
+    rotate: i % 2 === 0 ? -2 : 2,
+  }),
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    rotate: 0,
+    transition: {
+      duration: 0.7,
+      delay: i * 0.12,
+      ease: [0.25, 0.46, 0.45, 0.94],
+    },
+  }),
+};
+
 const WhyUs = () => {
   return (
     <section className="section-padding bg-primary relative overflow-hidden">
       {/* Dynamic background mesh */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.03),transparent_70%)] pointer-events-none" />
+
+      {/* Animated floating orbs */}
+      <motion.div
+        animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-20 left-10 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"
+      />
+      <motion.div
+        animate={{ y: [0, 15, 0], x: [0, -15, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute bottom-20 right-10 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"
+      />
       
       <div className="container-yl relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={titleVariants}
           className="text-center mb-16 md:mb-24"
         >
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 tracking-tight">
@@ -45,10 +86,11 @@ const WhyUs = () => {
           {benefits.map((benefit, index) => (
             <motion.div
               key={benefit.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={cardVariants}
               className="group relative h-full"
             >
               {/* Card Container */}

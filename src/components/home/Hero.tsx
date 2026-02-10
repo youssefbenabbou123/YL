@@ -4,6 +4,45 @@ import { CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-construction.jpg";
 
+const containerVariants = {
+    hidden: {},
+    visible: {
+        transition: {
+            staggerChildren: 0.15,
+            delayChildren: 0.1,
+        },
+    },
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
+    },
+};
+
+const imageVariants = {
+    hidden: { opacity: 0, scale: 0.85, rotate: 2 },
+    visible: {
+        opacity: 1,
+        scale: 1,
+        rotate: 0,
+        transition: { duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 },
+    },
+};
+
+const badgeVariants = {
+    hidden: { opacity: 0, scale: 0.8, y: 10 },
+    visible: {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        transition: { duration: 0.5, ease: "easeOut", delay: 0.6 },
+    },
+};
+
 const Hero = () => {
     return (
         <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-background">
@@ -14,24 +53,29 @@ const Hero = () => {
                     alt="Excellence en construction"
                     className="w-full h-full object-cover"
                 />
-                {/* Overlay for better text readability */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/70 to-black/75" />
             </div>
 
             {/* Decorative background elements */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none hidden lg:block" />
-            <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none hidden lg:block" />
+            <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none hidden lg:block"
+            />
 
             <div className="container-yl relative z-10">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
                     {/* Left Column: Content */}
-                    <div className="max-w-3xl">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
+                    <motion.div
+                        className="max-w-3xl"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        <motion.div variants={itemVariants}>
                             <span className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-primary/10 lg:bg-primary/5 backdrop-blur-sm rounded-full text-primary-foreground lg:text-primary text-xs md:text-sm font-semibold tracking-wide mb-6 md:mb-8 border border-primary-foreground/20 lg:border-primary/10">
                                 <span className="relative flex h-2 w-2 flex-shrink-0">
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-foreground lg:bg-primary opacity-75"></span>
@@ -42,9 +86,7 @@ const Hero = () => {
                         </motion.div>
 
                         <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.1 }}
+                            variants={itemVariants}
                             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground lg:text-black leading-[1.1] mb-4 md:mb-6 tracking-tight"
                         >
                             La mise en relation <br className="hidden sm:block" />
@@ -54,9 +96,7 @@ const Hero = () => {
                         </motion.h1>
 
                         <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
+                            variants={itemVariants}
                             className="text-base md:text-lg lg:text-xl text-primary-foreground/90 lg:text-muted-foreground mb-8 md:mb-10 max-w-lg leading-relaxed font-light"
                         >
                             YL Solutions met en relation vos projets de travaux avec des professionnels qualifiés.
@@ -64,9 +104,7 @@ const Hero = () => {
                         </motion.p>
 
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
+                            variants={itemVariants}
                             className="flex flex-col sm:flex-row gap-4 mb-12"
                         >
                             <Link to="/particuliers">
@@ -75,8 +113,8 @@ const Hero = () => {
                                 </Button>
                             </Link>
                             <Link to="/professionnels">
-                                <Button 
-                                    variant="outline" 
+                                <Button
+                                    variant="outline"
                                     className="w-full sm:w-auto h-14 px-8 text-base border-2 bg-white/90 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none hover:bg-white lg:hover:bg-secondary/50 rounded-full group hover:-translate-y-1 transition-all duration-300 text-foreground lg:text-black border-foreground/20 lg:border-border"
                                 >
                                     Je suis un professionnel
@@ -85,35 +123,34 @@ const Hero = () => {
                         </motion.div>
 
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.5, delay: 0.4 }}
+                            variants={itemVariants}
                             className="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-4 font-medium text-primary-foreground/90 lg:text-muted-foreground text-xs sm:text-sm"
                         >
-                            <div className="flex items-center whitespace-nowrap gap-1.5">
-                                <CheckCircle2 className="text-primary-foreground lg:text-primary w-4 h-4 flex-shrink-0" />
-                                <span>Service 100 % gratuit</span>
-                            </div>
-                            <div className="flex items-center whitespace-nowrap gap-1.5">
-                                <CheckCircle2 className="text-primary-foreground lg:text-primary w-4 h-4 flex-shrink-0" />
-                                <span>Professionnels vérifiés</span>
-                            </div>
-                            <div className="flex items-center whitespace-nowrap gap-1.5">
-                                <CheckCircle2 className="text-primary-foreground lg:text-primary w-4 h-4 flex-shrink-0" />
-                                <span>Accompagnement personnalisé</span>
-                            </div>
+                            {[
+                                "Service 100 % gratuit",
+                                "Professionnels vérifiés",
+                                "Accompagnement personnalisé",
+                            ].map((text, i) => (
+                                <motion.div
+                                    key={text}
+                                    variants={badgeVariants}
+                                    className="flex items-center whitespace-nowrap gap-1.5"
+                                >
+                                    <CheckCircle2 className="text-primary-foreground lg:text-primary w-4 h-4 flex-shrink-0" />
+                                    <span>{text}</span>
+                                </motion.div>
+                            ))}
                         </motion.div>
-                    </div>
+                    </motion.div>
 
                     {/* Right Column: Image/Visual */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.7, delay: 0.2 }}
+                        variants={imageVariants}
+                        initial="hidden"
+                        animate="visible"
                         className="relative hidden lg:block"
                     >
                         <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 border border-gray-100/50">
-                            {/* Image Container with aspect ratio */}
                             <div className="aspect-[4/5] relative">
                                 <img
                                     src={heroImage}
@@ -125,8 +162,18 @@ const Hero = () => {
                         </div>
 
                         {/* Decorative BG shapes behind image */}
-                        <div className="absolute -top-12 -right-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10" />
-                        <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl -z-10" />
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, delay: 0.8 }}
+                            className="absolute -top-12 -right-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"
+                        />
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, delay: 1 }}
+                            className="absolute -bottom-12 -left-12 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl -z-10"
+                        />
                     </motion.div>
 
                 </div>
