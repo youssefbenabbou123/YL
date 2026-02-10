@@ -74,13 +74,8 @@ const HowItWorks = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {steps.map((step, index) => (
-            <motion.div
+            <div
               key={step.number}
-              custom={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.8 }}
-              variants={cardVariants}
               className="bg-white rounded-3xl p-8 border border-border/60 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-primary/30 md:hover:-translate-y-1 will-change-[transform,box-shadow]"
             >
               <div className="flex items-center gap-4 mb-6">
@@ -98,7 +93,7 @@ const HowItWorks = () => {
               <p className="text-muted-foreground leading-relaxed">
                 {step.description}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
