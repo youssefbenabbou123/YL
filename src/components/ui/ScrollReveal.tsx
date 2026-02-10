@@ -21,8 +21,8 @@ export const ScrollReveal = ({
   const variants = {
     hidden: {
       opacity: 0,
-      x: direction === "left" ? -50 : direction === "right" ? 50 : 0,
-      y: direction === "up" ? 50 : direction === "down" ? -50 : 0,
+      x: direction === "left" ? -30 : direction === "right" ? 30 : 0,
+      y: direction === "up" ? 30 : direction === "down" ? -30 : 0,
     },
     visible: {
       opacity: 1,
@@ -31,7 +31,7 @@ export const ScrollReveal = ({
       transition: {
         duration,
         delay,
-        ease: "easeOut",
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
@@ -42,7 +42,7 @@ export const ScrollReveal = ({
         variants={variants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true, amount: 0.3 }}
       >
         {children}
       </motion.div>

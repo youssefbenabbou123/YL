@@ -110,10 +110,10 @@ const Particuliers = () => {
       <section className="py-16 md:py-20 bg-background">
         <div className="container-yl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="max-w-3xl mx-auto text-center"
           >
             <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
@@ -220,13 +220,13 @@ const Particuliers = () => {
                   <ScrollReveal
                     key={step.number}
                     direction="up"
-                    delay={index * 0.12}
+                    delay={index * 0.1}
                     width="100%"
                   >
                     <div className="flex flex-col items-center text-center group">
                       {/* Circle with icon */}
-                      <div className="relative z-10 w-[6.5rem] h-[6.5rem] rounded-full bg-white border-2 border-primary/20 group-hover:border-primary group-hover:shadow-lg group-hover:shadow-primary/10 flex items-center justify-center transition-all duration-500 mb-5">
-                        <step.icon className="w-7 h-7 text-primary/70 group-hover:text-primary transition-colors duration-300" />
+                      <div className="relative z-10 w-[6.5rem] h-[6.5rem] rounded-full bg-white border-2 border-primary/20 md:group-hover:border-primary md:group-hover:shadow-lg md:group-hover:shadow-primary/10 flex items-center justify-center transition-all duration-500 mb-5 will-change-[border,box-shadow]">
+                        <step.icon className="w-7 h-7 text-primary/70 md:group-hover:text-primary transition-colors duration-300" />
                         {/* Number badge */}
                         <span className="absolute -top-1 -right-1 w-7 h-7 bg-primary text-white text-xs font-bold rounded-full flex items-center justify-center shadow-md">
                           {step.number}
@@ -303,15 +303,15 @@ const Particuliers = () => {
                 delay={index * 0.1}
                 width="100%"
               >
-                <div className="group relative bg-white/[0.07] hover:bg-white/[0.14] backdrop-blur-sm border border-white/10 hover:border-white/25 rounded-2xl p-6 text-center transition-all duration-500 hover:-translate-y-1">
-                  {/* Glow on hover */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-cyan-400/0 to-cyan-400/0 group-hover:from-cyan-400/10 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
+                <div className="group relative bg-white/[0.07] hover:bg-white/[0.14] backdrop-blur-sm border border-white/10 md:hover:border-white/25 rounded-2xl p-6 text-center transition-all duration-500 md:hover:-translate-y-1 will-change-transform">
+                  {/* Glow on hover - hidden on mobile */}
+                  <div className="hidden md:block absolute inset-0 rounded-2xl bg-gradient-to-b from-cyan-400/0 to-cyan-400/0 md:group-hover:from-cyan-400/10 md:group-hover:to-transparent transition-all duration-500 pointer-events-none" />
 
                   <div className="relative z-10">
-                    <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors duration-300">
-                      <eng.icon className="w-6 h-6 text-cyan-300 group-hover:text-white transition-colors duration-300" />
+                    <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/10 md:group-hover:bg-white/20 flex items-center justify-center transition-colors duration-300">
+                      <eng.icon className="w-6 h-6 text-cyan-300 md:group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <p className="text-sm font-semibold text-primary-foreground/90 group-hover:text-white transition-colors leading-snug">
+                    <p className="text-sm font-semibold text-primary-foreground/90 md:group-hover:text-white transition-colors leading-snug">
                       {eng.label}
                     </p>
                   </div>

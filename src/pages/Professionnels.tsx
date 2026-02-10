@@ -76,10 +76,10 @@ const Professionnels = () => {
       <section className="py-16 md:py-20 bg-background">
         <div className="container-yl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="max-w-3xl mx-auto text-center"
           >
             <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
@@ -118,17 +118,10 @@ const Professionnels = () => {
             </ScrollReveal>
 
             {/* Right — Cards grid */}
-            <ScrollReveal direction="right" width="100%" delay={0.15}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {preRelationItems.map((item, index) => (
-                  <motion.div
-                    key={item.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="group relative bg-slate-50 hover:bg-white border border-border hover:border-primary/30 rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5"
-                  >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {preRelationItems.map((item, index) => (
+                <ScrollReveal key={item.label} direction="right" width="100%" delay={index * 0.1}>
+                  <div className="group relative bg-slate-50 hover:bg-white border border-border hover:border-primary/30 rounded-2xl p-6 transition-all duration-500 md:hover:-translate-y-1 md:hover:shadow-lg md:hover:shadow-primary/5">
                     {/* Gradient top line on hover */}
                     <div className="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-primary/0 to-transparent group-hover:via-primary/60 transition-all duration-500 rounded-full" />
 
@@ -138,10 +131,10 @@ const Professionnels = () => {
                     <p className="font-semibold text-foreground text-sm leading-snug">
                       {item.label}
                     </p>
-                  </motion.div>
-                ))}
-              </div>
-            </ScrollReveal>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -166,31 +159,23 @@ const Professionnels = () => {
           </ScrollReveal>
 
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white/[0.07] md:backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/[0.12] hover:border-white/20 transition-all duration-500 hover:-translate-y-1"
-            >
-              <h3 className="text-xl font-bold text-white mb-3">Validation par le professionnel</h3>
-              <p className="text-primary-foreground/75 leading-relaxed">
-                Chaque entreprise reste <strong className="text-white">libre d'accepter ou non</strong> un chantier. Aucune obligation, aucune pression.
-              </p>
-            </motion.div>
+            <ScrollReveal direction="up" delay={0.1} width="100%">
+              <div className="bg-white/[0.07] border border-white/10 rounded-2xl p-8 md:hover:bg-white/[0.12] md:hover:border-white/20 transition-all duration-500 md:hover:-translate-y-1 will-change-transform">
+                <h3 className="text-xl font-bold text-white mb-3">Validation par le professionnel</h3>
+                <p className="text-primary-foreground/75 leading-relaxed">
+                  Chaque entreprise reste <strong className="text-white">libre d'accepter ou non</strong> un chantier. Aucune obligation, aucune pression.
+                </p>
+              </div>
+            </ScrollReveal>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white/[0.07] md:backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/[0.12] hover:border-white/20 transition-all duration-500 hover:-translate-y-1"
-            >
-              <h3 className="text-xl font-bold text-white mb-3">Suivi continu</h3>
-              <p className="text-primary-foreground/75 leading-relaxed">
-                <strong className="text-white">YL Solutions reste l'interlocuteur de suivi</strong> tout au long du projet. Un cadre clair pour toutes les parties.
-              </p>
-            </motion.div>
+            <ScrollReveal direction="up" delay={0.2} width="100%">
+              <div className="bg-white/[0.07] border border-white/10 rounded-2xl p-8 md:hover:bg-white/[0.12] md:hover:border-white/20 transition-all duration-500 md:hover:-translate-y-1 will-change-transform">
+                <h3 className="text-xl font-bold text-white mb-3">Suivi continu</h3>
+                <p className="text-primary-foreground/75 leading-relaxed">
+                  <strong className="text-white">YL Solutions reste l'interlocuteur de suivi</strong> tout au long du projet. Un cadre clair pour toutes les parties.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -203,10 +188,10 @@ const Professionnels = () => {
 
         <div className="container-yl relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center mb-14"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
@@ -222,21 +207,21 @@ const Professionnels = () => {
               "Un interlocuteur unique pour les échanges",
               "Aucune démarche commerciale à effectuer",
             ].map((item, i) => (
-              <motion.div
+              <ScrollReveal
                 key={item}
-                initial={{ opacity: 0, y: 25, x: i % 2 === 0 ? -15 : 15 }}
-                whileInView={{ opacity: 1, y: 0, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group flex items-start gap-4 bg-slate-50 hover:bg-white border border-border hover:border-primary/30 rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5"
+                direction={i % 2 === 0 ? "left" : "right"}
+                delay={i * 0.1}
+                width="100%"
               >
+                <div className="group flex items-start gap-4 bg-slate-50 hover:bg-white border border-border hover:border-primary/30 rounded-2xl p-6 transition-all duration-500 md:hover:-translate-y-1 md:hover:shadow-lg md:hover:shadow-primary/5 will-change-transform">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
                   <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <p className="font-medium text-foreground leading-snug">{item}</p>
-              </motion.div>
+              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
