@@ -204,12 +204,8 @@ const APropos = () => {
 
       {/* Nos valeurs */}
       <section className="section-padding bg-slate-50 relative overflow-hidden">
-        {/* Animated floating orb */}
-        <motion.div
-          animate={{ y: [0, -20, 0], x: [0, 15, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"
-        />
+        {/* Decorative orb — hidden on mobile for performance */}
+        <div className="hidden md:block absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container-yl relative z-10">
           <motion.div

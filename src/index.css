@@ -162,3 +162,22 @@
     transform: translateY(-4px);
   }
 }
+
+/* Mobile performance: reduce animation complexity */
+@media (max-width: 768px) {
+  .blur-3xl,
+  .blur-2xl {
+    filter: none !important;
+  }
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

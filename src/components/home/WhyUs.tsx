@@ -54,17 +54,9 @@ const WhyUs = () => {
       {/* Dynamic background mesh */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.03),transparent_70%)] pointer-events-none" />
 
-      {/* Animated floating orbs */}
-      <motion.div
-        animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-20 left-10 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"
-      />
-      <motion.div
-        animate={{ y: [0, 15, 0], x: [0, -15, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-20 right-10 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"
-      />
+      {/* Decorative orbs — hidden on mobile for performance */}
+      <div className="hidden md:block absolute top-20 left-10 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="hidden md:block absolute bottom-20 right-10 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
       
       <div className="container-yl relative z-10">
         <motion.div
@@ -94,7 +86,7 @@ const WhyUs = () => {
               className="group relative h-full"
             >
               {/* Card Container */}
-              <div className="relative h-full bg-background/5 backdrop-blur-sm rounded-[2rem] p-1 overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+              <div className="relative h-full bg-background/5 md:backdrop-blur-sm rounded-[2rem] p-1 overflow-hidden transition-transform duration-500 hover:-translate-y-2">
                 
                 {/* Animated Gradient Border Layer */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />

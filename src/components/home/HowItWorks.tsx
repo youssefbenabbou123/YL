@@ -85,7 +85,7 @@ const HowItWorks = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={cardVariants}
-              whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              whileHover={{ y: -4, transition: { duration: 0.3 } }}
               className="bg-white rounded-3xl p-8 border border-border/60 shadow-sm hover:shadow-xl transition-shadow duration-300 hover:border-primary/30"
             >
               <div className="flex items-center gap-4 mb-6">

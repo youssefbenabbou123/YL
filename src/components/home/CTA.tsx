@@ -14,12 +14,8 @@ const CTA = () => {
         }}></div>
       </div>
 
-      {/* Animated floating orb */}
-      <motion.div
-        animate={{ y: [0, -15, 0], scale: [1, 1.1, 1] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/20 rounded-full blur-3xl pointer-events-none"
-      />
+      {/* Decorative orb — hidden on mobile for performance */}
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/20 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container-yl relative z-10">
         <div className="max-w-2xl mx-auto text-center">

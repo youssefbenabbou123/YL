@@ -74,7 +74,7 @@ const Realisations = () => {
               className="text-lg text-primary-foreground/80 mb-8 leading-relaxed"
             >
               Une sélection de projets réalisés en collaboration avec nos partenaires.
-              Des interventions encadrées, structurées et menées dans le respect des engagements.
+              <br className="md:hidden" />Des interventions encadrées, structurées et menées dans le respect des engagements.
             </motion.p>
           </motion.div>
         </div>

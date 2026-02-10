@@ -1,21 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ScrollProgress = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const updateScrollProgress = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      setScrollProgress(scrollPercent);
+      if (rafRef.current) return; // skip if already queued
+      rafRef.current = requestAnimationFrame(() => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        setScrollProgress(scrollPercent);
+        rafRef.current = null;
+      });
     };
 
-    window.addEventListener("scroll", updateScrollProgress);
-    updateScrollProgress(); // Initial call
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    updateScrollProgress();
 
     return () => {
       window.removeEventListener("scroll", updateScrollProgress);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 

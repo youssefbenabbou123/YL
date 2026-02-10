@@ -58,10 +58,7 @@ const Hero = () => {
 
             {/* Decorative background elements */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none hidden lg:block" />
-            <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
+            <div
                 className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none hidden lg:block"
             />
 
@@ -124,7 +121,7 @@ const Hero = () => {
 
                         <motion.div
                             variants={itemVariants}
-                            className="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-4 font-medium text-primary-foreground/90 lg:text-muted-foreground text-xs sm:text-sm"
+                            className="flex flex-wrap sm:flex-nowrap items-center justify-center sm:justify-start gap-3 sm:gap-4 font-medium text-primary-foreground/90 lg:text-muted-foreground text-xs sm:text-sm"
                         >
                             {[
                                 "Service 100 % gratuit",
@@ -162,18 +159,8 @@ const Hero = () => {
                         </div>
 
                         {/* Decorative BG shapes behind image */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 1, delay: 0.8 }}
-                            className="absolute -top-12 -right-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"
-                        />
-                        <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 1, delay: 1 }}
-                            className="absolute -bottom-12 -left-12 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl -z-10"
-                        />
+                        <div className="absolute -top-12 -right-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10" />
+                        <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl -z-10" />
                     </motion.div>
 
                 </div>

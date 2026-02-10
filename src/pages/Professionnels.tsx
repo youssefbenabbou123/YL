@@ -37,10 +37,10 @@ const Professionnels = () => {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-primary/60" />
-          {/* Decorative shapes */}
-          <div className="absolute top-32 right-20 w-80 h-80 border border-white/5 rounded-full" />
-          <div className="absolute top-40 right-28 w-64 h-64 border border-white/5 rounded-full" />
-          <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-cyan-400/5 rounded-full blur-3xl" />
+          {/* Decorative shapes — hidden on mobile for performance */}
+          <div className="hidden md:block absolute top-32 right-20 w-80 h-80 border border-white/5 rounded-full" />
+          <div className="hidden md:block absolute top-40 right-28 w-64 h-64 border border-white/5 rounded-full" />
+          <div className="hidden md:block absolute -bottom-20 -left-20 w-96 h-96 bg-cyan-400/5 rounded-full blur-3xl" />
         </div>
 
         <div className="container-yl relative z-10 py-20 md:py-28 flex flex-col items-center justify-center text-center">
@@ -97,7 +97,7 @@ const Professionnels = () => {
       ═══════════════════════════════════════════════ */}
       <section className="relative py-20 md:py-28 bg-background overflow-hidden">
         {/* Decorative */}
-        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-primary/5 to-transparent rounded-full -translate-y-1/2 -translate-x-1/3" />
+        <div className="hidden md:block absolute top-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-primary/5 to-transparent rounded-full -translate-y-1/2 -translate-x-1/3" />
 
         <div className="container-yl relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -150,8 +150,8 @@ const Professionnels = () => {
           SECTION 3 — Collaboration
       ═══════════════════════════════════════════════ */}
       <section className="relative py-20 md:py-28 bg-primary overflow-hidden">
-        {/* Decorative */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white/5 rounded-full -translate-y-1/2 blur-3xl" />
+        {/* Decorative — hidden on mobile for performance */}
+        <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white/5 rounded-full -translate-y-1/2 blur-3xl" />
 
         <div className="container-yl relative z-10">
           <ScrollReveal direction="up" width="100%">
@@ -171,7 +171,7 @@ const Professionnels = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white/[0.07] backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/[0.12] hover:border-white/20 transition-all duration-500 hover:-translate-y-1"
+              className="bg-white/[0.07] md:backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/[0.12] hover:border-white/20 transition-all duration-500 hover:-translate-y-1"
             >
               <h3 className="text-xl font-bold text-white mb-3">Validation par le professionnel</h3>
               <p className="text-primary-foreground/75 leading-relaxed">
@@ -184,7 +184,7 @@ const Professionnels = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white/[0.07] backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/[0.12] hover:border-white/20 transition-all duration-500 hover:-translate-y-1"
+              className="bg-white/[0.07] md:backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/[0.12] hover:border-white/20 transition-all duration-500 hover:-translate-y-1"
             >
               <h3 className="text-xl font-bold text-white mb-3">Suivi continu</h3>
               <p className="text-primary-foreground/75 leading-relaxed">
@@ -199,7 +199,7 @@ const Professionnels = () => {
           SECTION 3b — Un fonctionnement pensé pour les pros
       ═══════════════════════════════════════════════ */}
       <section className="py-20 md:py-28 bg-background relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-primary/5 to-transparent rounded-full translate-x-1/3 -translate-y-1/2 pointer-events-none" />
+        <div className="hidden md:block absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-primary/5 to-transparent rounded-full translate-x-1/3 -translate-y-1/2 pointer-events-none" />
 
         <div className="container-yl relative z-10">
           <motion.div

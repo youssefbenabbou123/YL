@@ -72,9 +72,9 @@ const Particuliers = () => {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/85 to-transparent" />
-          {/* Decorative blobs */}
-          <div className="absolute top-20 right-10 w-72 h-72 bg-white/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 left-20 w-56 h-56 bg-cyan-400/10 rounded-full blur-3xl" />
+          {/* Decorative blobs — hidden on mobile for performance */}
+          <div className="hidden md:block absolute top-20 right-10 w-72 h-72 bg-white/5 rounded-full blur-3xl" />
+          <div className="hidden md:block absolute bottom-10 left-20 w-56 h-56 bg-cyan-400/10 rounded-full blur-3xl" />
         </div>
 
         <div className="container-yl relative z-10 py-20 md:py-28 flex flex-col items-center justify-center text-center">
@@ -145,7 +145,7 @@ const Particuliers = () => {
       ═══════════════════════════════════════════════ */}
       <section className="relative py-20 md:py-28 bg-background overflow-hidden">
         {/* Decorative */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-primary/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/3" />
+        <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-primary/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/3" />
 
         <div className="container-yl relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -194,7 +194,7 @@ const Particuliers = () => {
       ═══════════════════════════════════════════════ */}
       <section className="relative py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
         {/* Decorative */}
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full translate-y-1/2 -translate-x-1/3 blur-3xl" />
+        <div className="hidden md:block absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full translate-y-1/2 -translate-x-1/3 blur-3xl" />
 
         <div className="container-yl relative z-10">
           <ScrollReveal direction="up" width="100%">
@@ -280,8 +280,8 @@ const Particuliers = () => {
       ═══════════════════════════════════════════════ */}
       <section className="relative py-20 md:py-28 bg-primary overflow-hidden">
         {/* Decorative */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white/5 rounded-full -translate-y-1/2 blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-cyan-400/10 rounded-full blur-2xl" />
+        <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white/5 rounded-full -translate-y-1/2 blur-3xl" />
+        <div className="hidden md:block absolute bottom-10 right-10 w-40 h-40 bg-cyan-400/10 rounded-full blur-2xl" />
 
         <div className="container-yl relative z-10">
           <ScrollReveal direction="up" width="100%">

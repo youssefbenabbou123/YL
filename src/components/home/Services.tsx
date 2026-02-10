@@ -110,12 +110,8 @@ const Services = () => {
       <div className="absolute top-0 left-0 w-96 h-96 bg-primary-foreground/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-foreground/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none" />
 
-      {/* Animated floating orbs */}
-      <motion.div
-        animate={{ y: [0, -25, 0] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-40 right-20 w-48 h-48 bg-cyan-400/5 rounded-full blur-3xl pointer-events-none"
-      />
+      {/* Decorative orb — hidden on mobile for performance */}
+      <div className="hidden md:block absolute top-40 right-20 w-48 h-48 bg-cyan-400/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container-yl relative z-10">
         <motion.div
@@ -152,7 +148,7 @@ const Services = () => {
               {services.map((service, index) => (
                 <CarouselItem key={service.title} className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <div className="h-full">
-                    <div className="group h-full relative bg-background/10 backdrop-blur-sm rounded-3xl p-8 transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden text-center border border-primary-foreground/10 flex flex-col">
+                    <div className="group h-full relative bg-background/10 md:backdrop-blur-sm rounded-3xl p-8 transition-all duration-300 shadow-lg hover:shadow-xl overflow-hidden text-center border border-primary-foreground/10 flex flex-col">
                       <div className="relative z-10 flex flex-col items-center flex-grow">
                         {/* Fixed height title area so borders align across cards */}
                         <div className="mb-3 w-full h-[5.5rem] flex flex-col items-center justify-center">
@@ -184,20 +180,42 @@ const Services = () => {
             <CarouselNext className="hidden md:flex bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20 text-white h-12 w-12 -right-12 lg:-right-16" />
           </Carousel>
 
-          {/* Pagination dots — visible on mobile */}
-          <div className="flex md:hidden justify-center items-center gap-2 mt-6">
-            {Array.from({ length: count }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => scrollTo(i)}
-                className={`rounded-full transition-all duration-300 ${
-                  i === current
-                    ? "w-8 h-2.5 bg-white"
-                    : "w-2.5 h-2.5 bg-white/30 hover:bg-white/50"
-                }`}
-                aria-label={`Aller au slide ${i + 1}`}
-              />
-            ))}
+          {/* Mobile navigation: arrows + dots */}
+          <div className="flex md:hidden justify-center items-center gap-4 mt-6">
+            <button
+              onClick={() => api?.scrollPrev()}
+              className="w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-colors flex-shrink-0"
+              aria-label="Précédent"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            <div className="flex items-center gap-2">
+              {Array.from({ length: count }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => scrollTo(i)}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === current
+                      ? "w-8 h-2.5 bg-white"
+                      : "w-2.5 h-2.5 bg-white/30 hover:bg-white/50"
+                  }`}
+                  aria-label={`Aller au slide ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={() => api?.scrollNext()}
+              className="w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-colors flex-shrink-0"
+              aria-label="Suivant"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </motion.div>
       </div>
