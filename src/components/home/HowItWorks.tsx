@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MessageSquare, Search, Handshake, CheckCircle } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const steps = [
   {
@@ -54,6 +55,8 @@ const titleVariants = {
 };
 
 const HowItWorks = () => {
+  const isMobile = useIsMobile();
+
   return (
     <section className="section-padding bg-background">
       <div className="container-yl max-w-6xl">
@@ -73,28 +76,47 @@ const HowItWorks = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {steps.map((step, index) => (
-            <div
-              key={step.number}
-              className="bg-white rounded-3xl p-8 border border-border/60 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-primary/30 md:hover:-translate-y-1 will-change-[transform,box-shadow]"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="flex-shrink-0">
-                  <div className="text-5xl font-bold text-primary/20 leading-none">
-                    {step.number}
+          {steps.map((step, index) => {
+            const cardContent = (
+              <>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="flex-shrink-0">
+                    <div className="text-5xl font-bold text-primary/20 leading-none">
+                      {step.number}
+                    </div>
+                  </div>
+                  <div className="flex-1 pt-2">
+                    <h3 className="text-2xl font-bold text-foreground mb-3">
+                      {step.title}
+                    </h3>
                   </div>
                 </div>
-                <div className="flex-1 pt-2">
-                  <h3 className="text-2xl font-bold text-foreground mb-3">
-                    {step.title}
-                  </h3>
-                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  {step.description}
+                </p>
+              </>
+            );
+
+            const className = "bg-white rounded-3xl p-8 border border-border/60 shadow-sm hover:shadow-xl transition-all duration-300 hover:border-primary/30 md:hover:-translate-y-1 will-change-[transform,box-shadow]";
+
+            return isMobile ? (
+              <div key={step.number} className={className}>
+                {cardContent}
               </div>
-              <p className="text-muted-foreground leading-relaxed">
-                {step.description}
-              </p>
-            </div>
-          ))}
+            ) : (
+              <motion.div
+                key={step.number}
+                custom={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={cardVariants}
+                className={className}
+              >
+                {cardContent}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
