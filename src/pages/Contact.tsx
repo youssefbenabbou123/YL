@@ -274,7 +274,7 @@ const Contact = () => {
                           <div className="flex-1 pt-1.5 min-w-0">
                             <p className="font-semibold text-foreground mb-2 text-xs uppercase tracking-wider text-primary/70">{item.label}</p>
                             <p
-                              className={`text-foreground text-sm leading-relaxed font-medium group-hover:text-primary transition-colors whitespace-pre-line ${item.smallText ? 'text-[0.72rem] whitespace-nowrap' : 'break-words'}`}
+                              className={`text-foreground text-sm leading-relaxed font-medium group-hover:text-primary transition-colors whitespace-pre-line ${item.smallText ? 'text-[0.68rem] whitespace-nowrap' : 'break-words'}`}
                             >
                               {item.content}
                             </p>
