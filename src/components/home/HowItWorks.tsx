@@ -85,15 +85,9 @@ const HowItWorks = () => {
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="flex-shrink-0">
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
-                    className="text-5xl font-bold text-primary/20 leading-none"
-                  >
+                  <div className="text-5xl font-bold text-primary/20 leading-none">
                     {step.number}
-                  </motion.div>
+                  </div>
                 </div>
                 <div className="flex-1 pt-2">
                   <h3 className="text-2xl font-bold text-foreground mb-3">
