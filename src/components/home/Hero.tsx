@@ -100,7 +100,7 @@ const Hero = () => {
                             className="text-base md:text-lg lg:text-xl text-primary-foreground/90 lg:text-muted-foreground mb-8 md:mb-10 max-w-lg leading-relaxed font-light"
                         >
                             YL Solutions met en relation vos projets de travaux avec des professionnels qualifiés.
-                            Un accompagnement simple, rapide et fiable.
+                            <br />Un accompagnement simple, rapide et fiable.
                         </motion.p>
 
                         <motion.div

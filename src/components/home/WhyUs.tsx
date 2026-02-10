@@ -3,19 +3,19 @@ import { motion } from "framer-motion";
 const benefits = [
   {
     title: "Professionnels sélectionnés",
-    description: "Un réseau construit sur la fiabilité et l'expertise. Nous vérifions rigoureusement chaque partenaire.",
+    description: "Un réseau construit sur la fiabilité et l'expertise.\nNous vérifions rigoureusement chaque partenaire.",
   },
   {
     title: "Gain de temps",
-    description: "Une recherche simplifiée, sans perte de temps. Nous trouvons pour vous les meilleurs profils.",
+    description: "Une recherche simplifiée, sans perte de temps.\nNous trouvons pour vous les meilleurs profils.",
   },
   {
     title: "Accompagnement dédié",
-    description: "Un interlocuteur unique pour un suivi clair. Vous n'êtes jamais seul face à votre projet.",
+    description: "Un interlocuteur unique pour un suivi clair.\nVous n'êtes jamais seul face à votre projet.",
   },
   {
     title: "Service gratuit",
-    description: "Aucune avance de frais, aucun engagement. Notre service d'intermédiation est totalement transparent.",
+    description: "Aucune avance de frais, aucun engagement.\nNotre service d'intermédiation est totalement transparent.",
   },
 ];
 
@@ -115,7 +115,7 @@ const WhyUs = () => {
                   <div className="w-12 h-1 bg-gradient-to-r from-primary/20 to-transparent mb-6 rounded-full group-hover:w-24 group-hover:from-primary group-hover:to-primary/50 transition-all duration-500 ease-out" />
 
                   {/* Description */}
-                  <p className="text-muted-foreground text-lg leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
+                  <p className="text-muted-foreground text-lg leading-relaxed group-hover:text-foreground/80 transition-colors duration-300 whitespace-pre-line">
                     {benefit.description}
                   </p>
 

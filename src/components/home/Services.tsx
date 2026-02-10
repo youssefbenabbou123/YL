@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 
 const services = [
@@ -80,6 +82,28 @@ const services = [
 ];
 
 const Services = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  const scrollTo = useCallback(
+    (index: number) => {
+      api?.scrollTo(index);
+    },
+    [api]
+  );
+
   return (
     <section id="services" className="section-padding bg-primary relative overflow-hidden">
       {/* Decorative background blobs */}
@@ -117,6 +141,7 @@ const Services = () => {
           className="px-4 md:px-16"
         >
           <Carousel
+            setApi={setApi}
             opts={{
               align: "start",
               loop: true,
@@ -158,6 +183,22 @@ const Services = () => {
             <CarouselPrevious className="hidden md:flex bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20 text-white h-12 w-12 -left-12 lg:-left-16" />
             <CarouselNext className="hidden md:flex bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20 text-white h-12 w-12 -right-12 lg:-right-16" />
           </Carousel>
+
+          {/* Pagination dots — visible on mobile */}
+          <div className="flex md:hidden justify-center items-center gap-2 mt-6">
+            {Array.from({ length: count }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => scrollTo(i)}
+                className={`rounded-full transition-all duration-300 ${
+                  i === current
+                    ? "w-8 h-2.5 bg-white"
+                    : "w-2.5 h-2.5 bg-white/30 hover:bg-white/50"
+                }`}
+                aria-label={`Aller au slide ${i + 1}`}
+              />
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

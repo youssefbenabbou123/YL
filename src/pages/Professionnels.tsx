@@ -43,18 +43,18 @@ const Professionnels = () => {
           <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-cyan-400/5 rounded-full blur-3xl" />
         </div>
 
-        <div className="container-yl relative z-10 py-20 md:py-28">
+        <div className="container-yl relative z-10 py-20 md:py-28 flex flex-col items-center justify-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="max-w-3xl"
+            className="flex flex-col items-center"
           >
             <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-primary-foreground/90 text-sm font-medium mb-6">
               Pour les professionnels
             </span>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold text-primary-foreground mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight">
               Cadre d'intervention{" "}
               <span className="relative inline-block">
                 <span className="relative z-10">des professionnels</span>
@@ -62,15 +62,30 @@ const Professionnels = () => {
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-                  className="absolute bottom-1 left-0 w-full h-3 bg-cyan-400/25 -z-0 origin-left rounded"
+                  className="absolute bottom-2 left-0 w-full h-3 md:h-4 bg-cyan-400/25 -z-0 origin-left rounded"
                 />
               </span>
             </h1>
+          </motion.div>
+        </div>
+      </section>
 
-            <p className="text-lg md:text-xl text-primary-foreground/80 mb-4 leading-relaxed max-w-2xl">
-              YL Solutions intervient comme <strong className="text-primary-foreground">intermédiaire entre le client et les entreprises</strong> réalisant les travaux.
+      {/* ═══════════════════════════════════════════════
+          SECTION 1b — Texte d'introduction
+      ═══════════════════════════════════════════════ */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container-yl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
+              YL Solutions intervient comme <strong className="text-foreground">intermédiaire entre le client et les entreprises</strong> réalisant les travaux.
             </p>
-            <p className="text-base text-primary-foreground/70 leading-relaxed max-w-2xl">
+            <p className="text-base text-muted-foreground/80 leading-relaxed">
               Nous préparons le projet avec le particulier avant toute prise de contact afin de clarifier la demande. Les professionnels sont sollicités uniquement lorsque le chantier correspond à leur domaine d'intervention.
             </p>
           </motion.div>
@@ -158,7 +173,7 @@ const Professionnels = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="bg-white/[0.07] backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/[0.12] hover:border-white/20 transition-all duration-500 hover:-translate-y-1"
             >
-              <h3 className="text-xl font-bold text-white mb-3">Liberté de choix</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Validation par le professionnel</h3>
               <p className="text-primary-foreground/75 leading-relaxed">
                 Chaque entreprise reste <strong className="text-white">libre d'accepter ou non</strong> un chantier. Aucune obligation, aucune pression.
               </p>
@@ -181,24 +196,76 @@ const Professionnels = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════
+          SECTION 3b — Un fonctionnement pensé pour les pros
+      ═══════════════════════════════════════════════ */}
+      <section className="py-20 md:py-28 bg-background relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-primary/5 to-transparent rounded-full translate-x-1/3 -translate-y-1/2 pointer-events-none" />
+
+        <div className="container-yl relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-center mb-14"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              Un fonctionnement pensé{" "}
+              <span className="text-primary">pour les professionnels</span>
+            </h2>
+          </motion.div>
+
+          <div className="max-w-3xl mx-auto grid sm:grid-cols-2 gap-5">
+            {[
+              "Des projets correspondant à votre champ d'intervention",
+              "Une demande clarifiée en amont",
+              "Un interlocuteur unique pour les échanges",
+              "Aucune démarche commerciale à effectuer",
+            ].map((item, i) => (
+              <motion.div
+                key={item}
+                initial={{ opacity: 0, y: 25, x: i % 2 === 0 ? -15 : 15 }}
+                whileInView={{ opacity: 1, y: 0, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group flex items-start gap-4 bg-slate-50 hover:bg-white border border-border hover:border-primary/30 rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5"
+              >
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
+                  <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p className="font-medium text-foreground leading-snug">{item}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
           SECTION 4 — CTA : Être contacté
       ═══════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 overflow-hidden bg-background">
-        {/* Decorative */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-br from-primary/5 via-cyan-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <section className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-r from-sky-50 via-blue-100 to-blue-300">
+        {/* Decorative Pattern Overlay */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(14,37,68,0.2) 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
 
         <div className="container-yl relative z-10">
           <ScrollReveal direction="up" width="100%">
             <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-6 leading-tight">
                 Être{" "}
-                <span className="text-primary">contacté</span>
+                <span className="text-slate-800">contacté</span>
               </h2>
 
-              <p className="text-lg text-muted-foreground mb-4 leading-relaxed max-w-xl mx-auto">
+              <p className="text-lg text-slate-600 mb-4 leading-relaxed max-w-xl mx-auto">
                 Présentez votre activité ainsi que votre secteur d'intervention.
               </p>
-              <p className="text-base text-muted-foreground/80 mb-10 leading-relaxed max-w-xl mx-auto">
+              <p className="text-base text-slate-600/80 mb-10 leading-relaxed max-w-xl mx-auto">
                 Nous vous recontacterons lorsqu'un projet correspond à votre domaine.
               </p>
 

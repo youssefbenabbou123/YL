@@ -186,7 +186,7 @@ const APropos = () => {
                       Fondateur de YL Solutions
                     </p>
                     <a
-                      href="https://www.linkedin.com/in/youcef-lebkiri-apporteur-d'affaires-btp-576b661b9/"
+                      href="https://www.linkedin.com/in/youcef-lebkiri-apporteur-d%E2%80%99affaires-btp-576b661b9/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-4 py-2 bg-[#0077b5] hover:bg-[#005885] text-white rounded-full text-sm font-medium transition-colors duration-300 shadow-md hover:shadow-lg"

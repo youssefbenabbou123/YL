@@ -77,18 +77,18 @@ const Particuliers = () => {
           <div className="absolute bottom-10 left-20 w-56 h-56 bg-cyan-400/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="container-yl relative z-10 py-20 md:py-28">
+        <div className="container-yl relative z-10 py-20 md:py-28 flex flex-col items-center justify-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="max-w-3xl"
+            className="flex flex-col items-center"
           >
             <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-primary-foreground/90 text-sm font-medium mb-6">
               Pour les particuliers
             </span>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold text-primary-foreground mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight">
               Trouvez les bons intervenants pour vos travaux,{" "}
               <span className="relative inline-block">
                 <span className="relative z-10">sans avoir à les chercher</span>
@@ -96,26 +96,41 @@ const Particuliers = () => {
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-                  className="absolute bottom-1 left-0 w-full h-3 bg-cyan-400/30 -z-0 origin-left rounded"
+                  className="absolute bottom-2 left-0 w-full h-3 md:h-4 bg-cyan-400/30 -z-0 origin-left rounded"
                 />
               </span>
             </h1>
+          </motion.div>
+        </div>
+      </section>
 
-            <p className="text-lg md:text-xl text-primary-foreground/80 mb-4 leading-relaxed max-w-2xl">
+      {/* ═══════════════════════════════════════════════
+          SECTION 1b — Texte d'introduction
+      ═══════════════════════════════════════════════ */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container-yl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
               Réaliser des travaux demande du temps, des décisions et une coordination précise.
             </p>
-            <p className="text-base text-primary-foreground/70 mb-4 leading-relaxed max-w-2xl">
-              <strong className="text-primary-foreground">YL Solutions vous accompagne</strong> et prend en charge l'organisation complète de votre projet, jusqu'à sa finalisation.
+            <p className="text-base text-muted-foreground/90 mb-4 leading-relaxed">
+              <strong className="text-foreground">YL Solutions vous accompagne</strong> et prend en charge l'organisation complète de votre projet, jusqu'à sa finalisation.
             </p>
-            <p className="text-base text-primary-foreground/70 mb-10 leading-relaxed max-w-2xl">
+            <p className="text-base text-muted-foreground/80 mb-10 leading-relaxed">
               Vous échangez avec un seul interlocuteur qui suit votre chantier à chaque étape.
             </p>
 
             <Link to="/contact">
               <Button
-                variant="ctaOutline"
+                variant="cta"
                 size="xl"
-                className="group rounded-full text-base px-8"
+                className="group rounded-full text-base px-8 shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all duration-300"
               >
                 Demander un devis
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -310,19 +325,24 @@ const Particuliers = () => {
       {/* ═══════════════════════════════════════════════
           SECTION 5 — CTA : Parlons de votre projet
       ═══════════════════════════════════════════════ */}
-      <section className="relative py-24 md:py-32 overflow-hidden bg-background">
-        {/* Decorative gradient blobs */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-br from-primary/5 via-cyan-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <section className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-r from-sky-50 via-blue-100 to-blue-300">
+        {/* Decorative Pattern Overlay */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(14,37,68,0.2) 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
 
         <div className="container-yl relative z-10">
           <ScrollReveal direction="up" width="100%">
             <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-6 leading-tight">
                 Parlons de{" "}
-                <span className="text-primary">votre projet</span>
+                <span className="text-slate-800">votre projet</span>
               </h2>
 
-              <p className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
+              <p className="text-lg text-slate-600 mb-10 leading-relaxed max-w-xl mx-auto">
                 Nous étudions chaque demande avec attention. Présentez-nous votre
                 besoin pour une première analyse.
               </p>
