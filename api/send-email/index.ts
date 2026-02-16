@@ -1,40 +1,53 @@
 import { Resend } from 'resend';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-// Validate required environment variables
-if (!process.env.RESEND_API_KEY) {
-  throw new Error('RESEND_API_KEY is not set in environment variables');
-}
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-if (!process.env.TEST_EMAIL) {
-  throw new Error('TEST_EMAIL is not set in environment variables');
-}
+  // Handle preflight request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const TEST_EMAIL = process.env.TEST_EMAIL;
-
-export default async function handler(req: Request) {
   if (req.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-      status: 405,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return res.status(405).json({ success: false, error: 'Method not allowed' });
   }
 
   try {
-    const body = await req.json();
-    
-    const { name, email, phone, type, message, attachments } = body;
+    // Validate environment variables
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not set');
+      return res.status(500).json({ 
+        success: false, 
+        error: 'Server configuration error' 
+      });
+    }
+
+    if (!process.env.TEST_EMAIL) {
+      console.error('TEST_EMAIL is not set');
+      return res.status(500).json({ 
+        success: false, 
+        error: 'Server configuration error' 
+      });
+    }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const TEST_EMAIL = process.env.TEST_EMAIL;
+
+    const { name, email, phone, type, message, attachments } = req.body;
 
     // Validate required fields
     if (!name || !email || !message || !type) {
-      return new Response(JSON.stringify({ 
+      return res.status(400).json({ 
         success: false, 
         error: 'Missing required fields' 
-      }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
       });
     }
+
+    console.log('Processing email request:', { name, email, type, hasAttachments: !!attachments?.length });
 
     // Convert base64 attachments to Resend format (Buffer)
     const emailAttachments = attachments && attachments.length > 0
@@ -198,7 +211,7 @@ export default async function handler(req: Request) {
 
     // Send email
     const { data, error } = await resend.emails.send({
-      from: 'YL Solutions <onboarding@resend.dev>', // You'll need to verify your domain with Resend
+      from: 'YL Solutions <onboarding@resend.dev>',
       to: [TEST_EMAIL],
       replyTo: email,
       subject: `Nouveau message de contact - ${name} (${typeLabel})`,
@@ -208,21 +221,22 @@ export default async function handler(req: Request) {
 
     if (error) {
       console.error('Resend error:', error);
-      return new Response(JSON.stringify({ success: false, error: 'Failed to send email', details: error }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
+      return res.status(500).json({ 
+        success: false, 
+        error: 'Failed to send email', 
+        details: error 
       });
     }
 
-    return new Response(JSON.stringify({ success: true, data }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    console.log('Email sent successfully:', data);
+    return res.status(200).json({ success: true, data });
+
   } catch (error) {
     console.error('Error processing request:', error);
-    return new Response(JSON.stringify({ success: false, error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
+    return res.status(500).json({ 
+      success: false, 
+      error: 'Internal server error', 
+      details: error instanceof Error ? error.message : 'Unknown error' 
     });
   }
 }
