@@ -1,4 +1,5 @@
-// API endpoint for sending emails. Use Vercel serverless by default.
+// API endpoint for sending emails (handles CORS by calling backend)
+// In development, Vite proxy will forward /api requests to the backend
 const API_URL = import.meta.env.VITE_API_URL || '';
 
 export interface ContactFormData {
@@ -12,32 +13,52 @@ export interface ContactFormData {
 
 export async function sendContactEmail(data: ContactFormData): Promise<{ success: boolean; error?: string }> {
   try {
-    const formData = new FormData();
-    formData.append('name', data.name);
-    formData.append('email', data.email);
-    formData.append('type', data.type);
-    formData.append('message', data.message);
+    // Convert files to base64 for sending to backend
+    const attachments = data.attachments && data.attachments.length > 0
+      ? await Promise.all(
+          data.attachments.map(async (file) => {
+            return new Promise<{ filename: string; content: string }>((resolve, reject) => {
+              const reader = new FileReader();
+              reader.onload = () => {
+                if (reader.result && typeof reader.result === 'string') {
+                  // Remove data URL prefix (data:image/jpeg;base64,)
+                  const base64 = reader.result.split(',')[1] || reader.result;
+                  resolve({
+                    filename: file.name,
+                    content: base64,
+                  });
+                } else {
+                  reject(new Error('Failed to read file'));
+                }
+              };
+              reader.onerror = () => reject(new Error('Failed to read file'));
+              reader.readAsDataURL(file);
+            });
+          })
+        )
+      : undefined;
 
-    if (data.phone) {
-      formData.append('phone', data.phone);
-    }
-
-    if (data.attachments && data.attachments.length > 0) {
-      data.attachments.forEach((file, index) => {
-        formData.append(`attachment_${index}`, file);
-      });
-    }
-
+    // Send to backend API
     const response = await fetch(`${API_URL}/api/send-email`, {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        phone: data.phone || undefined,
+        type: data.type,
+        message: data.message,
+        attachments: attachments,
+      }),
     });
 
-    const result = await response.json().catch(() => ({}));
+    const result = await response.json();
 
     if (!response.ok || !result.success) {
       return { 
-        success: false,
+        success: false, 
         error: result.error || 'Failed to send email' 
       };
     }

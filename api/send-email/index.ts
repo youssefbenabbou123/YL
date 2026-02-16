@@ -21,35 +21,32 @@ export default async function handler(req: Request) {
   }
 
   try {
-    const formData = await req.formData();
+    const body = await req.json();
     
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const phone = formData.get('phone') as string;
-    const type = formData.get('type') as string;
-    const message = formData.get('message') as string;
-    
-    // Get all attachment files
-    const attachments: File[] = [];
-    let fileIndex = 0;
-    while (formData.get(`attachment_${fileIndex}`)) {
-      const file = formData.get(`attachment_${fileIndex}`) as File;
-      attachments.push(file);
-      fileIndex++;
+    const { name, email, phone, type, message, attachments } = body;
+
+    // Validate required fields
+    if (!name || !email || !message || !type) {
+      return new Response(JSON.stringify({ 
+        success: false, 
+        error: 'Missing required fields' 
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
-    // Convert files to attachments format for Resend
-    const emailAttachments = await Promise.all(
-      attachments.map(async (file) => {
-        const arrayBuffer = await file.arrayBuffer();
-        const buffer = Buffer.from(arrayBuffer);
-        
-        return {
-          filename: file.name,
-          content: buffer,
-        };
-      })
-    );
+    // Convert base64 attachments to Resend format (Buffer)
+    const emailAttachments = attachments && attachments.length > 0
+      ? attachments.map((attachment: { filename: string; content: string }) => {
+          // Convert base64 string to Buffer
+          const buffer = Buffer.from(attachment.content, 'base64');
+          return {
+            filename: attachment.filename,
+            content: buffer,
+          };
+        })
+      : [];
 
     // Prepare email content
     const typeLabel = type === 'particulier' ? 'Un particulier' : 'Un professionnel';
@@ -174,7 +171,7 @@ export default async function handler(req: Request) {
               <div class="message-box">${message.replace(/\n/g, '<br>')}</div>
             </div>
 
-            ${attachments.length > 0 ? `
+            ${attachments && attachments.length > 0 ? `
               <div class="attachments-section">
                 <h3 style="margin: 0 0 10px 0; font-size: 18px; color: #1e293b; font-weight: 700;">
                   Pièces jointes (${attachments.length})
@@ -183,7 +180,7 @@ export default async function handler(req: Request) {
                   ${attachments.length} fichier(s) attaché(s) - Voir les fichiers en pièces jointes
                 </p>
                 <ul>
-                  ${attachments.map(file => `<li style="color: #1e293b;">${file.name} (${(file.size / 1024).toFixed(2)} KB)</li>`).join('')}
+                  ${attachments.map((file: { filename: string }) => `<li style="color: #1e293b;">${file.filename}</li>`).join('')}
                 </ul>
               </div>
             ` : ''}
@@ -211,7 +208,7 @@ export default async function handler(req: Request) {
 
     if (error) {
       console.error('Resend error:', error);
-      return new Response(JSON.stringify({ error: 'Failed to send email', details: error }), {
+      return new Response(JSON.stringify({ success: false, error: 'Failed to send email', details: error }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
       });
@@ -223,7 +220,7 @@ export default async function handler(req: Request) {
     });
   } catch (error) {
     console.error('Error processing request:', error);
-    return new Response(JSON.stringify({ error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' }), {
+    return new Response(JSON.stringify({ success: false, error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
