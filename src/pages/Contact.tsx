@@ -398,7 +398,10 @@ const Contact = () => {
                   {/* Message */}
                   <div>
                     <Label htmlFor="message" className="text-foreground mb-3 block text-sm font-semibold">
-                      Décrivez votre projet ou votre demande <span className="text-primary font-bold">*</span>
+                      {formData.type === "professionnel"
+                        ? <>Décrivez votre activité <span className="text-primary font-bold">*</span></>
+                        : <>Décrivez votre projet ou votre demande <span className="text-primary font-bold">*</span></>
+                      }
                     </Label>
                     <Textarea
                       id="message"
